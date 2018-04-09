@@ -2,7 +2,7 @@
 https://jira.criteois.com/browse/GSTM-3339
 
 -->
-
+<p>=== START ====</p>
 <p>example 1</p>
 <script type='text/javascript' src='//static.criteo.net/js/ld/publishertag.js'></script>
 <div id='crt-538211' style='width:300px; height:600px;'></div>
@@ -47,9 +47,11 @@ Criteo.events.push(function() {
 window.addEventListener( "message", 
 	function (e) {
                 console.log(e);
-		if(e.origin !== 'http://cas.criteo.com'){ return; } 
+		if(e.origin !== 'http://cas.criteo.com' && e.origin !== 'https://cas.criteo.com'){ return; } 
 		if (e.data == 'passback-1202999') {document.getElementById("crt-201472b8").style.display = "none";}
 	},
 false);
 </script>
 <!-- END CRITEO TAG -->
+
+<p>=== END ====</p>
