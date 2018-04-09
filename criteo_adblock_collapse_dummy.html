@@ -1,0 +1,37 @@
+
+<p>==START==</p>
+<!-- BEGIN CRITEO LOADER -->
+<script async="async" type="text/javascript" src="https://static.criteo.net/js/ld/publishertag.js"></script>
+<script>
+    window.Criteo = window.Criteo || {};
+    window.Criteo.events = window.Criteo.events || [];
+</script>
+<!-- END CRITEO LOADER -->
+
+
+<!-- BEGIN 1203071 - SEA Dummy Account - SG - Adblocking - 300x250 - collapse -->
+<div id="crt-47b56818" style="width:300px;height:250px;"></div>
+<script type="text/javascript">
+Criteo.events.push(function() {
+    Criteo.DisplayAcceptableAdIfAdblocked({
+        "zoneid": 1203071,
+        "containerid": "crt-47b56818",
+        "overrideZoneFloor": false
+    });
+});
+</script>
+
+<script type='text/javascript'>
+window.addEventListener( "message", 
+	function (e) {
+                console.log("first listender");
+                console.log(e);
+		//if(e.origin !== 'http://cas.criteo.com'){ return; } 
+		if (e.data == 'criteo-passback-1203071') {document.getElementById("crt-47b56818").style.display = "none";}
+	},
+false);
+</script>
+
+<!-- END CRITEO TAG -->
+
+<p>==END==</p>
