@@ -1,0 +1,55 @@
+<!--
+https://jira.criteois.com/browse/GSTM-3339
+
+-->
+
+<p>example 1</p>
+<script type='text/javascript' src='//static.criteo.net/js/ld/publishertag.js'></script>
+<div id='crt-538211' style='width:300px; height:600px;'></div>
+<script type='text/javascript'>	
+Criteo.DisplayAcceptableAdIfAdblocked(
+       {'zoneid' : 538211,
+        'containerid' : 'crt-538211',
+		'overrideZoneFloor':false
+    });
+</script>
+<script type='text/javascript'>
+window.addEventListener( "message", 
+	function (e) {
+		if(e.origin !== 'http://cas.criteo.com'){ return; } 
+		if (e.data == 'passback') {document.getElementById("crt-538211").style.display = "none";}
+	},
+false);
+</script>
+
+<p>example 2</p>
+
+<!-- BEGIN CRITEO LOADER -->
+<script async="async" type="text/javascript" src="https://static.criteo.net/js/ld/publishertag.js"></script>
+<script>
+    window.Criteo = window.Criteo || {};
+    window.Criteo.events = window.Criteo.events || [];
+</script>
+<!-- END CRITEO LOADER -->
+
+<!-- BEGIN 538211 - Liberty Times - TW - Adblocking - 300x600 - collapse -->
+<div id="crt-201472b8" style="width:300px;height:600px;"></div>
+<script type="text/javascript">
+Criteo.events.push(function() {
+    Criteo.DisplayAcceptableAdIfAdblocked({
+        "zoneid": 538211,
+        "containerid": "crt-201472b8",
+        "overrideZoneFloor": false
+    });
+});
+</script>
+<script type='text/javascript'>
+window.addEventListener( "message", 
+	function (e) {
+                console.log(e);
+		if(e.origin !== 'http://cas.criteo.com'){ return; } 
+		if (e.data == 'passback-1202999') {document.getElementById("crt-201472b8").style.display = "none";}
+	},
+false);
+</script>
+<!-- END CRITEO TAG -->
