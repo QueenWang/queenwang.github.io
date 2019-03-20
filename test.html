@@ -1,12 +1,67 @@
-<!-- ADX Tag -->
-<script type="text/javascript"><!--
-google_ad_client = "ca-pub-0428516164225172";
-/* Backfilling - apps - 300x250 */
-google_ad_slot = "apps300x250";
-google_ad_width = 300;
-google_ad_height = 250;
-//-->
+
+<!-- BEGIN CRITEO LOADER -->
+<script async='async' type="text/javascript" src="https://static.criteo.net/js/ld/publishertag.js"></script>
+<!-- END CRITEO LOADER -->
+
+<script async='async' src='https://www.googletagservices.com/tag/js/gpt.js'></script>
+<script>
+  var googletag = googletag || {};
+  googletag.cmd = googletag.cmd || [];
 </script>
-<script type="text/javascript"
-src="//pagead2.googlesyndication.com/pagead/show_ads.js">
+<script>
+  googletag.cmd.push(function() {
+    var responsiveSizeMapping = googletag.sizeMapping()
+            .addSize([1050, 200], [[970, 250], [728, 90], [300, 250]])
+            .addSize([0, 0], [160, 600])
+            .build();
+    googletag.defineSlot('/140800857/kun-test-responsive', [[970, 250], [728, 90], [300, 250], [160, 600]], 'slot-1')
+            .defineSizeMapping(responsiveSizeMapping).addService(googletag.pubads());
+
+    
+    googletag.pubads().enableSingleRequest();
+    googletag.enableServices();
+});
+
 </script>
+
+<script>
+ var CriteoAdUnits = { 
+    "placements": [       
+        { "slotid": "slot-1", "zoneid": 1173089}, 
+        { "slotid": "slot-1", "zoneid": 1394563 }, //IN zone
+]};
+
+
+window.Criteo = window.Criteo || {};
+window.Criteo.events = window.Criteo.events || [];
+
+
+googletag.cmd.push(function() {
+    googletag.pubads().disableInitialLoad();
+});
+
+
+var launchAdServer = function() {
+    googletag.cmd.push(function() {
+        console.log("execut launch ad sever callback");
+        
+        Criteo.SetDFPKeyValueTargeting();
+        googletag.pubads().refresh();
+    });
+}
+
+Criteo.events.push(function() {
+    Criteo.SetLineItemRanges("0..30:0.01");
+    Criteo.RequestBids(CriteoAdUnits, launchAdServer, 2000);
+});  
+
+</script>
+
+
+<!-- /140800857/kun-test-responsive -->
+<p>Test Slot 1 (responsive size)</p>
+<div id='slot-1'>
+<script>
+googletag.cmd.push(function() { googletag.display('div-gpt-ad-1508218762426-0'); });
+</script>
+</div>
