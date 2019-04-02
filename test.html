@@ -1,67 +1,112 @@
-
-<!-- BEGIN CRITEO LOADER -->
-<script async='async' type="text/javascript" src="https://static.criteo.net/js/ld/publishertag.js"></script>
-<!-- END CRITEO LOADER -->
-
-<script async='async' src='https://www.googletagservices.com/tag/js/gpt.js'></script>
+<!-- BEGIN CRITEO CDB - NCT - VN - CDB - SA - new - 320x100 -->
+<script async='async' type="text/javascript" src="//static.criteo.net/js/ld/publishertag.js"></script>
+<!-- CRITEO SLOT DIV ID, MUST BE UNIQUE PER FRAME -->
+<div id="criteo_slot_1400543"></div>
 <script>
-  var googletag = googletag || {};
-  googletag.cmd = googletag.cmd || [];
+    !function(){
+        /* CRITEO ZONE ID, SLOT DIV ID */
+        var criteoZoneId = 1400543;
+        var criteoSlotId = "criteo_slot_1400543";
+         
+        var passback = function () {
+            /* CONFIG YOUR PASSBACK HERE, USE ASYNC JS */
+            var slotid = "criteo_slot_1400543"; var div = document.getElementById(slotid);
+            if (div) {
+            var s = document.createElement('script'); s.setAttribute('async', ''); s.setAttribute('src', '//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js'); 
+            div.appendChild(s);
+            /* Waptouh_Top_320x100_2 */
+            div.innerHTML+= '<ins class="adsbygoogle" style="display:inline-block;width:320px;height:100px" data-ad-client="ca-pub-3937222777177717" data-ad-slot="3289750157"></ins>';
+            (adsbygoogle = window.adsbygoogle || []).push({});
+            }
+        }
+ 
+        var CriteoAdUnits = { "placements": [{ "slotid": criteoSlotId, "zoneid": criteoZoneId }]};
+        window.Criteo = window.Criteo || {}; window.Criteo.events = window.Criteo.events || [];
+        var processCdbBid = function() {
+            var bids = Criteo.GetBidsForAdUnit(criteoSlotId);
+            if (bids.length > 0) {
+                var bidFound = bids[0]; Criteo.RenderAd({ bidId: bidFound.id, containerId: bidFound.impressionId });
+            } else { passback();}
+        };
+        Criteo.events.push(function() { Criteo.RequestBids(CriteoAdUnits, processCdbBid, 2000);});
+    }();
 </script>
+<!-- END CRITEO CDB -->
+
+
+
+<!-- BEGIN CRITEO CDB - NCT - VN - CDB - SA - new - 970x250 -->
+<script async='async' type="text/javascript" src="//static.criteo.net/js/ld/publishertag.js"></script>
+<!-- CRITEO SLOT DIV ID, MUST BE UNIQUE PER FRAME -->
+<div id="criteo_slot_1400542"></div>
 <script>
-  googletag.cmd.push(function() {
-    var responsiveSizeMapping = googletag.sizeMapping()
-            .addSize([1050, 200], [[970, 250], [728, 90], [300, 250]])
-            .addSize([0, 0], [160, 600])
-            .build();
-    googletag.defineSlot('/140800857/kun-test-responsive', [[970, 250], [728, 90], [300, 250], [160, 600]], 'slot-1')
-            .defineSizeMapping(responsiveSizeMapping).addService(googletag.pubads());
-
-    
-    googletag.pubads().enableSingleRequest();
-    googletag.enableServices();
-});
-
+    !function(){
+        /* CRITEO ZONE ID, SLOT DIV ID */
+        var criteoZoneId = 1400542;
+        var criteoSlotId = "criteo_slot_1400542";
+         
+        var passback = function () {
+            /* CONFIG YOUR PASSBACK HERE, USE ASYNC JS */
+            var slotid = "criteo_slot_1400542"; var div = document.getElementById(slotid);
+            if (div) {
+            var s = document.createElement('script'); s.setAttribute('async', ''); s.setAttribute('src', '//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js'); 
+            div.appendChild(s);
+            /* GG_Web_Masthead 970x250_VN */
+            div.innerHTML+= '<ins class="adsbygoogle" style="display:inline-block;width:970px;height:250px" data-ad-client="ca-pub-3937222777177717" data-ad-slot="9661607459"></ins>';
+            (adsbygoogle = window.adsbygoogle || []).push({});
+            }
+        }
+ 
+        var CriteoAdUnits = { "placements": [{ "slotid": criteoSlotId, "zoneid": criteoZoneId }]};
+        window.Criteo = window.Criteo || {}; window.Criteo.events = window.Criteo.events || [];
+        var processCdbBid = function() {
+            var bids = Criteo.GetBidsForAdUnit(criteoSlotId);
+            if (bids.length > 0) {
+                var bidFound = bids[0]; Criteo.RenderAd({ bidId: bidFound.id, containerId: bidFound.impressionId });
+            } else { passback();}
+        };
+        Criteo.events.push(function() { Criteo.RequestBids(CriteoAdUnits, processCdbBid, 2000);});
+    }();
 </script>
+<!-- END CRITEO CDB -->
 
+
+
+
+<!-- BEGIN CRITEO CDB - NCT - VN - CDB - SA - new - 300x600 -->
+<script async='async' type="text/javascript" src="//static.criteo.net/js/ld/publishertag.js"></script>
+<!-- CRITEO SLOT DIV ID, MUST BE UNIQUE PER FRAME -->
+<div id="criteo_slot_1400541"></div>
 <script>
- var CriteoAdUnits = { 
-    "placements": [   
-      { "slotid": "slot-1", "zoneid": 1173089}, 
-      { "slotid": "slot-1", "zoneid": 1395335 }, //IN zone, USD bidding
-]};
-
-
-window.Criteo = window.Criteo || {};
-window.Criteo.events = window.Criteo.events || [];
-
-
-googletag.cmd.push(function() {
-    googletag.pubads().disableInitialLoad();
-});
-
-
-var launchAdServer = function() {
-    googletag.cmd.push(function() {
-        console.log("execut launch ad sever callback");
-        
-        Criteo.SetDFPKeyValueTargeting();
-        googletag.pubads().refresh();
-    });
-}
-
-Criteo.events.push(function() {
-    Criteo.SetLineItemRanges("0..30:0.01");
-    Criteo.RequestBids(CriteoAdUnits, launchAdServer, 2000);
-});  
-
+    !function(){
+        /* CRITEO ZONE ID, SLOT DIV ID */
+        var criteoZoneId = 1400541;
+        var criteoSlotId = "criteo_slot_1400541";
+         
+        var passback = function () {
+            /* CONFIG YOUR PASSBACK HERE, USE ASYNC JS */
+            var slotid = "criteo_slot_1400541"; var div = document.getElementById(slotid);
+            if (div) {
+            var s = document.createElement('script'); s.setAttribute('async', ''); s.setAttribute('src', '//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js'); 
+            div.appendChild(s);
+            /* GG_Web_Right 1&2_300x600_VN2 */
+            div.innerHTML+= '<ins class="adsbygoogle" style="display:inline-block;width:300px;height:600px" data-ad-client="ca-pub-3937222777177717" data-ad-slot="6335426333"></ins>';
+            (adsbygoogle = window.adsbygoogle || []).push({});
+            }
+        }
+ 
+        var CriteoAdUnits = { "placements": [{ "slotid": criteoSlotId, "zoneid": criteoZoneId }]};
+        window.Criteo = window.Criteo || {}; window.Criteo.events = window.Criteo.events || [];
+        var processCdbBid = function() {
+            var bids = Criteo.GetBidsForAdUnit(criteoSlotId);
+            if (bids.length > 0) {
+                var bidFound = bids[0]; Criteo.RenderAd({ bidId: bidFound.id, containerId: bidFound.impressionId });
+            } else { passback();}
+        };
+        Criteo.events.push(function() { Criteo.RequestBids(CriteoAdUnits, processCdbBid, 2000);});
+    }();
 </script>
+<!-- END CRITEO CDB -->
 
 
-<!-- /140800857/kun-test-responsive -->
-<p>Test Slot 1 (responsive size)</p>
-<div id='slot-1'>
-<script>
-googletag.cmd.push(function() { googletag.display('div-gpt-ad-1508218762426-0'); });
-</script>
-</div>
+
