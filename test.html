@@ -30,10 +30,13 @@
         var CriteoAdUnits = { "placements": [{ "slotid": criteoSlotId, "zoneid": criteoZoneId }]};
         window.Criteo = window.Criteo || {}; window.Criteo.events = window.Criteo.events || [];
         var processCdbBid = function() {
+            passback();
+            /*
             var bids = Criteo.GetBidsForAdUnit(criteoSlotId);
             if (bids.length > 0) {
                 var bidFound = bids[0]; Criteo.RenderAd({ bidId: bidFound.id, containerId: bidFound.impressionId });
             } else { passback();}
+            */
         };
         Criteo.events.push(function() { Criteo.RequestBids(CriteoAdUnits, processCdbBid, 2000);});
     }();
