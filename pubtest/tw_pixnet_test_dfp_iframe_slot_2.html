@@ -1,0 +1,53 @@
+       
+    <script async='async' src='https://www.googletagservices.com/tag/js/gpt.js'></script>
+    <script>
+        var gptadslots = [];
+        var googletag = googletag || {cmd:[]};
+    </script>
+    <!-- Kun: below should be a common header -->
+    <script async='async' type="text/javascript" src="//static.criteo.net/js/ld/publishertag.js"></script>
+    <script>
+        window.Criteo = window.Criteo || {};
+        window.Criteo.events = window.Criteo.events || [];
+        //Criteo CDB SA
+        googletag.cmd.push(function() {
+            googletag.pubads().disableInitialLoad();
+        });
+    </script>
+    <script>
+        googletag.cmd.push(function() {
+            //Adslot 1 declaration
+            var DFPslot = googletag.defineSlot('/1021267/mobile_article_bottom6', [[336, 280], [300, 250]], 'div-gpt-ad-1555485130017-0-sa-2')
+                .addService(googletag.pubads());
+            gptadslots.push(DFPslot);
+            console.log(DFPslot);
+
+            googletag.pubads().enableSingleRequest();
+
+            googletag.pubads().set('page_url', 'pixnet.net');
+
+            // Call Criteo
+            googletag.cmd.push(function () {
+                Criteo.events.push(function () {
+                    Criteo.RequestBidsOnGoogleTagSlots({
+                        networkId: 4916,
+                        placements: [DFPslot],
+                        callback: function () { // New callback function
+                            Criteo.SetDFPKeyValueTargeting(); // Set targeting keywords
+                            googletag.pubads().refresh([DFPslot]); // GPT: Call refresh() adserver to fetch the new adunits
+                        },
+                    }, 2000)
+                });
+            })
+
+
+            googletag.enableServices();
+        });
+    </script>
+
+    <div id='div-gpt-ad-1555485130017-0-sa-2'>
+        <script>
+            googletag.cmd.push(function() { googletag.display('div-gpt-ad-1555485130017-0-sa-2'); });
+        </script>
+    </div>
+
