@@ -1,0 +1,150 @@
+<div> Pixnet DFP Test</div>
+
+<h3> == Origional DFP Tag ==</h3>
+
+<script async='async' src='https://www.googletagservices.com/tag/js/gpt.js'></script>
+<script>
+    var gptadslots = [];
+    var googletag = googletag || {cmd:[]};
+</script>
+<!-- Kun: below should be a common header -->
+<script async='async' type="text/javascript" src="//static.criteo.net/js/ld/publishertag.js"></script>
+<script>
+    window.Criteo = window.Criteo || {};
+    window.Criteo.events = window.Criteo.events || [];
+</script>
+<!-- Kun: above should be a common header -->
+
+
+<div id='div-gpt-ad-1555485130017-0'>
+</div>
+<script>
+googletag.cmd.push(function() {
+    //Adslot 1 declaration
+    var DFPslot = googletag.defineSlot('/1021267/mobile_article_bottom6', [[336, 280], [300, 250]], 'div-gpt-ad-1555485130017-0')
+        .addService(googletag.pubads());
+    gptadslots.push(DFPslot);
+
+    googletag.pubads().enableSingleRequest();
+
+    googletag.pubads().set('page_url', 'pixnet.net');
+
+    googletag.enableServices();
+    
+    googletag.cmd.push(function() { 
+        googletag.display('div-gpt-ad-1555485130017-0'); 
+        googletag.pubads().refresh([DFPslot]);
+    });
+});
+</script>
+
+
+
+
+<!-- *** CDB SA TEST  *** -->
+<br>
+<br>
+<h3> == Criteo CDB SA inside Falcon (having iframe) == </h3>
+
+<div> slot 1</div>
+<iframe src="tw_pixnet_test_dfp_iframe_slot.html" width="300" height="250" frameborder="0" marginwidth="0" marginheight="0" vspace="0" hspace="0" allowtransparency="true" scrolling="no" allowfullscreen="true" >
+</iframe>
+
+<div> slot 2</div>
+<iframe src="tw_pixnet_test_dfp_iframe_slot_2.html" width="300" height="250" frameborder="0" marginwidth="0" marginheight="0" vspace="0" hspace="0" allowtransparency="true" scrolling="no" allowfullscreen="true" >
+</iframe>
+
+
+<br>
+<br>
+<h3> == Criteo Passback to DFP ASYNC == </h3>
+<div> slot 1</div>
+<!-- BEGIN CRITEO CDB -->
+<!-- CRITEO SLOT DIV ID, MUST BE UNIQUE PER FRAME -->
+<div id="criteo_slot_1105264"></div>
+<script>
+    !function(){
+        /* CRITEO ZONE ID, SLOT DIV ID */
+        var criteoZoneId = 1105264;
+        var criteoSlotId = "criteo_slot_1105264";
+         
+        var passback = function () {
+            /* CONFIG YOUR PASSBACK HERE, USE ASYNC JS */
+            //console.log("passback");
+            var div = document.getElementById(criteoSlotId);
+            if (div) {
+                googletag.cmd.push(function() {
+                //Adslot 1 declaration
+                gptadslots.push(googletag.defineSlot('/1021267/mobile_article_bottom6', [[336, 280], [300, 250]], 'div-gpt-ad-1555485130017-0-passback')
+                .addService(googletag.pubads()));
+
+                googletag.pubads().enableSingleRequest();
+
+                googletag.pubads().set('page_url', 'pixnet.net');
+
+                googletag.enableServices();
+                });
+                div.innerHTML+= '<div id="div-gpt-ad-1555485130017-0-passback"></div>';
+                googletag.cmd.push(function() { googletag.display('div-gpt-ad-1555485130017-0-passback'); });
+            }
+
+        }
+ 
+        var CriteoAdUnits = { "placements": [{ "slotid": criteoSlotId, "zoneid": criteoZoneId }]};
+        window.Criteo = window.Criteo || {}; window.Criteo.events = window.Criteo.events || [];
+        var processCdbBid = function() {
+            var bids = Criteo.GetBidsForAdUnit(criteoSlotId);
+            if (bids.length > 0) {
+                var bidFound = bids[0]; Criteo.RenderAd({ bidId: bidFound.id, containerId: bidFound.impressionId });
+            } else { passback();}
+        };
+        Criteo.events.push(function() { Criteo.RequestBids(CriteoAdUnits, processCdbBid, 2000);});
+    }();
+</script>
+<!-- END CRITEO CDB -->
+
+<br>
+<div> slot 2</div>
+<!-- BEGIN CRITEO CDB -->
+<!-- CRITEO SLOT DIV ID, MUST BE UNIQUE PER FRAME -->
+<div id="criteo_slot_1105264-2"></div>
+<script>
+    !function(){
+        /* CRITEO ZONE ID, SLOT DIV ID */
+        var criteoZoneId = 1105264;
+        var criteoSlotId = "criteo_slot_1105264-2";
+         
+        var passback = function () {
+            /* CONFIG YOUR PASSBACK HERE, USE ASYNC JS */
+            //console.log("passback");
+             var div = document.getElementById(criteoSlotId);
+            if (div) {
+                googletag.cmd.push(function() {
+                //Adslot 1 declaration
+                gptadslots.push(googletag.defineSlot('/1021267/mobile_article_bottom6', [[336, 280], [300, 250]], 'div-gpt-ad-1555485130017-0-passback-2')
+                .addService(googletag.pubads()));
+
+                googletag.pubads().enableSingleRequest();
+
+                googletag.pubads().set('page_url', 'pixnet.net');
+
+                googletag.enableServices();
+                });
+                div.innerHTML+= '<div id="div-gpt-ad-1555485130017-0-passback-2"></div>';
+                googletag.cmd.push(function() { googletag.display('div-gpt-ad-1555485130017-0-passback-2'); });
+            }
+
+        }
+ 
+        var CriteoAdUnits = { "placements": [{ "slotid": criteoSlotId, "zoneid": criteoZoneId }]};
+        window.Criteo = window.Criteo || {}; window.Criteo.events = window.Criteo.events || [];
+        var processCdbBid = function() {
+            var bids = Criteo.GetBidsForAdUnit(criteoSlotId);
+            if (bids.length > 0) {
+                var bidFound = bids[0]; Criteo.RenderAd({ bidId: bidFound.id, containerId: bidFound.impressionId });
+            } else { passback();}
+        };
+        Criteo.events.push(function() { Criteo.RequestBids(CriteoAdUnits, processCdbBid, 2000);});
+    }();
+</script>
+<!-- END CRITEO CDB -->
