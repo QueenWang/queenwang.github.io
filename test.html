@@ -1,43 +1,19 @@
 
-
-<div> PASSBCK TEST </div>
-<script async='async' type="text/javascript" src="//static.criteo.net/js/ld/publishertag.js"></script>
-<!-- CRITEO SLOT DIV ID, MUST BE UNIQUE PER FRAME -->
-<div id="criteo_slot_1173089"></div>
 <script>
-    !function(){
-        /* CRITEO ZONE ID, SLOT DIV ID */
-        var criteoZoneId = 1173089;
-        var criteoSlotId = "criteo_slot_1173089";
-         
-        var passback = function () {
-            /* CONFIG YOUR PASSBACK HERE, USE ASYNC JS */
-            var width = "970", height = "250";
-            var slotid = "criteo_slot_1173089"; var div = document.getElementById(slotid);
-            if (div) { var ifr = document.createElement('iframe'); ifr.setAttribute("id", slotid+"_iframe"), ifr.setAttribute("frameborder","0"), ifr.setAttribute("allowtransparency","true"), ifr.setAttribute("hspace","0"), ifr.setAttribute("marginwidth","0"), ifr.setAttribute("marginheight","0"), ifr.setAttribute("scrolling","no"), ifr.setAttribute("vspace","0"), ifr.setAttribute("width", "970"), ifr.setAttribute("height", "250");
-            div.appendChild(ifr);
-            var htmlcode = "<html><head></head><body><script src='https://www.googletagservices.com/tag/js/gpt.js'>\n"+
-            "  googletag.pubads().definePassback('/12656948/allsite_970x250_1', [970, 250]).display();\n"+
-            "</scr"+"ipt></body></html>";
-            var ifrd = ifr.contentWindow.document; ifrd.open(); ifrd.write(htmlcode); ifrd.close(); }
-        }
- 
-        var CriteoAdUnits = { "placements": [{ "slotid": criteoSlotId, "zoneid": criteoZoneId }]};
-        window.Criteo = window.Criteo || {}; window.Criteo.events = window.Criteo.events || [];
-        var processCdbBid = function() {
-            passback();
-            /*
-            var bids = Criteo.GetBidsForAdUnit(criteoSlotId);
-            if (bids.length > 0) {
-                var bidFound = bids[0]; Criteo.RenderAd({ bidId: bidFound.id, containerId: bidFound.impressionId });
-            } else { passback();}
-            */
-        };
-        Criteo.events.push(function() { Criteo.RequestBids(CriteoAdUnits, processCdbBid, 2000);});
-    }();
+/* PLEASE CONFIG YOUR PASSBACK HERE */
+            document.write(
+                '<script type="text/javascript"><!--'+
+                'google_ad_client = "ca-pub-0428516164225172";'+
+                '/* Backfilling - apps - 300x250 */'+
+                'google_ad_slot = "apps300x250";'+
+                'google_ad_width = 300;'+
+                'google_ad_height = 250;'+
+                '//-->'+
+                '</scr'+'ipt>'+
+                '<script type="text/javascript"'+
+                'src="//pagead2.googlesyndication.com/pagead/show_ads.js">'+
+                '</scr'+'ipt>'
+            );  
+
+
 </script>
-<!-- END CRITEO CDB -->
-
-
-
-
