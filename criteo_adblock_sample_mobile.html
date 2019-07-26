@@ -1,0 +1,62 @@
+<!DOCTYPE HTML> 
+<html amp>
+<head>
+<meta charset="utf-8"> 
+<meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1"> 
+
+</head>
+<body>
+
+
+<p>=== PAGE CONTENT TOP ====</p>
+<!-- ### Head ### -->
+
+<!-- ### Loader - One loader for all Criteo integrations ### -->
+
+<!-- BEGIN CRITEO LOADER -->
+<script async="async" type="text/javascript" src="https://static.criteo.net/js/ld/publishertag.js"></script>
+<script>
+    window.Criteo = window.Criteo || {};
+    window.Criteo.events = window.Criteo.events || [];
+</script>
+<!-- END CRITEO LOADER -->
+
+
+
+<!-- ### Body ### -->
+
+<!-- ### Adblock Tags ### -->
+
+<p>Ad Block 1</p>
+<div id="crt-1" style="width:160px;height:600px;"></div>
+<script type="text/javascript">
+Criteo.events.push(function() {
+    Criteo.DisplayAcceptableAdIfAdblocked({
+        "zoneid": 1426708,
+        "containerid": "crt-1",
+        "overrideZoneFloor": false
+    });
+});
+</script>
+<!-- END CRITEO TAG -->
+
+
+<p>Ad Block TEST - RU ZONE</p>
+<div id="crt-2" style="width:300px;height:250px;"></div>
+<script type="text/javascript">
+Criteo.events.push(function() {
+    Criteo.DisplayAcceptableAdIfAdblocked({
+        "zoneid": 1401799,
+        "containerid": "crt-2",
+        "overrideZoneFloor": false
+    });
+});
+</script>
+<!-- END CRITEO TAG -->
+
+
+
+
+<p>=== PAGE CONTENT BOTTOM====</p>
+</body>
+</html>
