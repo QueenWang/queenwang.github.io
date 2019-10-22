@@ -57,3 +57,18 @@ window.addEventListener( "message",
 false);
 </script>
 <!-- END CRITEO TAG -->
+
+<p>==TEST ad block without collapse ==</p>
+<!-- BEGIN 1460851 - 24H Group - VN - Adblocking - 300x600 - collapse -->
+<div id = "Crt-1460851" style="height: 600px; width: 300px;"></div>
+<script type="text/javascript">
+    Criteo.events.push(function() {
+        Criteo.DisplayAcceptableAdIfAdblocked({
+            "zoneid": 1460851,
+            "containerid": "Crt-1460851",
+            "overrideZoneFloor": false
+        });
+    });
+</script>
+<!-- END CRITEO TAG -->
+    
