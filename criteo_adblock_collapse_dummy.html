@@ -35,3 +35,25 @@ false);
 <!-- END CRITEO TAG -->
 
 <p>==END==</p>
+
+
+<p>==TEST PMC SETTING==</p>
+<!-- BEGIN 1460852 - 24H Group - VN - Adblocking - 300x250 - collapse -->
+<div id = "Crt-1460852" style="height: 250px; width: 300px;"></div>
+<script type="text/javascript">
+    Criteo.events.push(function() {
+        Criteo.DisplayAcceptableAdIfAdblocked({
+            "zoneid": 1460852,
+            "containerid": "Crt-1460852",
+            "overrideZoneFloor": false
+        });
+    });
+</script>
+<script type='text/javascript'>
+window.addEventListener( "message", 
+    function (e) {
+        if (e.data == 'criteo-passback-1460852') {document.getElementById("Crt-1460852").style.display = "none";}
+    },
+false);
+</script>
+<!-- END CRITEO TAG -->
