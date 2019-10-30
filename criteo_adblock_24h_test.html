@@ -105,6 +105,9 @@ window.addEventListener('load', function(){
             <script type="text/javascript">
             window.addEventListener( "message", 
                 function (e) {
+                        console.log("test listener");
+                console.log(e);
+		//if(e.origin !== 'http://cas.criteo.com' && e.origin !== 'https://cas.criteo.com'){ return; }
                     if (e.data == "criteo-passback-1460852") {document.getElementById("Crt-1460852").style.display = "none";}
                 },
             false);
