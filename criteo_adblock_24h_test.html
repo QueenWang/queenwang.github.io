@@ -1,25 +1,4 @@
-<!--
-page https://beta.24h.com.vn/tin-tuc-trong-ngay/dai-bieu-qh-nguyen-thi-quyet-tam-roi-nuoc-mat-tren-nghi-truong-khi-noi-ve-cong-nhan-c46a1093779.html?region=hn
-a lot of places are using addEventListener
 
-window.addEventListener('load', function(){    
-            var objPrNhan = new prNhanHang(v_html_template_pr_special44,v_json_data_pr_special44,"box_bai_pr_special44");
-            objPrNhan.random_news_pr_special();
-        });
-            
-</script><script type="text/javascript">window.addEventListener("load", function(){hien_thi_bai_pr_cung_su_kien_chia_se_theo_user("boxnhanhang-pr","bai_pr_nhan_hang_");});</script></div>
-
-<script type="text/javascript">
-    var v_so_giay_luon_chuyen_recommend_video = 20000;
-window.addEventListener('load', function(){    
-    xu_ly_anh_gif_trong_bai_viet();
-});
-</script>
-
-
-
-
--->
 
 <!-- BEGIN CRITEO LOADER -->
     <script async="async" type="text/javascript" src="https://static.criteo.net/js/ld/publishertag.js"></script>
@@ -29,8 +8,8 @@ window.addEventListener('load', function(){
     </script>
 <!-- END CRITEO LOADER -->
 
-
-    <br> TEST 728x90
+<br> === test 24H zones ===
+    <br> 728x90 - zone 1460850
 <div id = "Crt-1460850" style="height: 90px; width: 728px;"></div>
             <script type="text/javascript">
                 Criteo.events.push(function() {
@@ -44,13 +23,16 @@ window.addEventListener('load', function(){
             <script type="text/javascript">
             window.addEventListener( "message", 
                 function (e) {
+		    //test check listener data
+		    console.log("*** test listener ***");
+                    console.log(e);
                     if (e.data == "criteo-passback-1460850") {document.getElementById("Crt-1460850").style.display = "none";}
                 },
             false);
             </script>
        
 
-    <br> TEST 300x250       
+    <br> 300x250 - zone 1460852      
     <!-- BEGIN 1460852 - 24H Group - VN - Adblocking - 300x250 - collapse -->
             <div id = "Crt-1460852" style="height: 250px; width: 300px;"></div>
             <script type="text/javascript">
@@ -71,7 +53,7 @@ window.addEventListener('load', function(){
             </script>
             <!-- END CRITEO TAG -->
             
-   <br> 300x600 origional code         
+   <br> 300x600 - 1460851  
 <div id = "Crt-1460851" style="height: 600px; width: 300px;"></div>
             <script type="text/javascript">
                 Criteo.events.push(function() {
@@ -85,9 +67,6 @@ window.addEventListener('load', function(){
             <script type="text/javascript">
             window.addEventListener( "message", 
                 function (e) {
-                        console.log("test listener");
-                console.log(e);
-		//if(e.origin !== 'http://cas.criteo.com' && e.origin !== 'https://cas.criteo.com'){ return; }
                     if (e.data == "criteo-passback-1460851") {document.getElementById("Crt-1460851").style.display = "none";}
                 },
             false);
@@ -95,7 +74,7 @@ window.addEventListener('load', function(){
       
 
 
-   <br> 300x600 test new zone id
+   <br> 300x600 test new zone id - zone 1465302
    <div id = "Crt-1465302" style="height: 600px; width: 300px;"></div>
                     <script type="text/javascript">
                         Criteo.events.push(function() {
@@ -119,8 +98,8 @@ window.addEventListener('load', function(){
 
 <br>
 <br>
-<br> test EVA
-<br> 300x600
+<br> === test EVA zones ==-=
+<br> 300x600 - zone 1461171
 <!-- BEGIN 1461171 - Eva - VN - Adblocking - 300x600 - collapse -->
 <div id = "Crt-1461171" style="height: 600px; width: 300px;"></div>
 <script type="text/javascript">
@@ -142,7 +121,7 @@ false);
 </script>
 <!-- END CRITEO TAG -->
     
-    <br> 970x250
+    <br> 970x250 - zone 1461172
 <!-- BEGIN 1461172 - Eva - VN - Adblocking - 970x250 - collapse -->
 <div id = "Crt-1461172" style="height: 250px; width: 970px;"></div>
 <script type="text/javascript">
@@ -157,14 +136,12 @@ false);
 <script type='text/javascript'>
 window.addEventListener( "message", 
     function (e) {
-	  //console.log("==test listener==");
-               // console.log(e);
         if (e.data == 'criteo-passback-1461172') {document.getElementById("Crt-1461172").style.display = "none";}
     },
 false);
 </script>
 
-<br> 970x250 new zoneid
+<br> 970x250 new test zone - zone 1465971
 <div id = "Crt-1465971" style="height: 250px; width: 970px;"></div>
 <script type="text/javascript">
     Criteo.events.push(function() {
@@ -186,12 +163,12 @@ false);
 
 
 
-<br> 970x250 non collapse zone
+<br> 970x250 non collapse zone (no passback) - zone 1278074
 <div id = "Crt-1278074" style="height: 250px; width: 970px;"></div>
 <script type="text/javascript">
     Criteo.events.push(function() {
         Criteo.DisplayAcceptableAdIfAdblocked({
-            "zoneid": 1278074,
+            "zoneid": v,
             "containerid": "Crt-1278074",
             "overrideZoneFloor": false
         });
