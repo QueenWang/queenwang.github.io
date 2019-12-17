@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<!--
+    ad unit example code http://prebid.org/dev-docs/bidders.html#criteo
+    prebid basic example http://prebid.org/dev-docs/examples/basic-example.html
+-->
+<html>
+    <head>
+        <title>Prebid Test</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    
+    <body>
+        <p> == PREBID TEST PAGE == </p>
+        
+
+        <script async src="//www.googletagservices.com/tag/js/gpt.js"></script>
+        <!--
+        <script async src="//acdn.adnxs.com/prebid/not-for-prod/1/prebid.js"></script>
+        -->
+        <script async src="prebid2.43.0.js"></script> <!-- only criteo and appnexus adaptor, not include DFP video module-->
+        
+        <script>
+            var div_1_sizes = [
+                [300, 250],
+                [300, 600]
+            ];
+            var div_2_sizes = [
+                [728, 90],
+                [970, 250]
+            ];
+            var PREBID_TIMEOUT = 10000; //increase timeout to big number
+            var FAILSAFE_TIMEOUT = 30000;
+
+            var adUnits = [
+                {
+                    code: 'div-1', //IMPORTANT: support both ad unit code and div id, if pub able to differeciate by ad unit
+                    mediaTypes: {
+                        banner: {
+                            sizes: div_1_sizes
+                        }
+                    },
+                    bids: [
+                        {
+                            bidder: 'appnexus',
+                            params: {
+                                placementId: 13144370
+                            }
+                        },
+                        {
+                            bidder: 'criteo',
+                            params: {
+                                //networkId: 9111
+                                zoneId: 1416091
+                            }
+                        }
+                    ]
+                },
+                {
+                    code: 'div-2',
+                    mediaTypes: {
+                        banner: {
+                            sizes: div_2_sizes
+                        }
+                    },
+                    bids: [
+                        {
+                            bidder: 'appnexus',
+                            params: {
+                                placementId: 13144370
+                            }
+                        },
+                        {
+                            bidder: 'criteo',
+                            params: {
+                                //networkId: 9111
+                                zoneId: 1416092
+                            }
+                        }
+                    ]
+                }
+                
+                
+            ];
+            
+            
+            
+
+            // ======== DO NOT EDIT BELOW THIS LINE =========== //
+            var googletag = googletag || {};
+            googletag.cmd = googletag.cmd || [];
+            googletag.cmd.push(function() {
+                googletag.pubads().disableInitialLoad();
+            });
+
+            var pbjs = pbjs || {};
+            pbjs.que = pbjs.que || [];
+
+            pbjs.que.push(function() {
+                pbjs.addAdUnits(adUnits);
+                
+                pbjs.requestBids({
+                    bidsBackHandler: initAdserver,
+                    timeout: PREBID_TIMEOUT
+                });
+            });
+
+            function initAdserver() {
+                if (pbjs.initAdserverSet) return;
+                pbjs.initAdserverSet = true;
+                googletag.cmd.push(function() {
+                    pbjs.que.push(function() {
+                        pbjs.setTargetingForGPTAsync();
+                        googletag.pubads().refresh();
+                    });
+                });
+
+            }
+            // in case PBJS doesn't load
+            setTimeout(function() {
+                initAdserver();
+            }, FAILSAFE_TIMEOUT);
+            
+            /*
+             * /140800857/kun-test-responsive
+             * DFP ad unit for CDB SA TEST, sizes 'fluid', [1, 1], [160, 600], [728, 90], [300, 600], [320, 50], [970, 250], [300, 250]
+             */
+            googletag.cmd.push(function() {
+                googletag.defineSlot('/140800857/kun-test-responsive', div_1_sizes, 'div-1').addService(googletag.pubads());
+                googletag.pubads().enableSingleRequest();
+                googletag.enableServices();
+            });
+            googletag.cmd.push(function() {
+                googletag.defineSlot('/140800857/kun-test-responsive', div_2_sizes, 'div-2').addService(googletag.pubads());
+                googletag.pubads().enableSingleRequest();
+                googletag.enableServices();
+            });
+
+        </script>
+
+        <h2>Basic Prebid.js Example</h2>
+        <h5>Div-1</h5>
+        <div id='div-1'>
+            <script type='text/javascript'>
+                googletag.cmd.push(function() {
+                    googletag.display('div-1');
+                });
+
+            </script>
+        </div>
+
+        <br>
+
+        <h5>Div-2</h5>
+        <div id='div-2'>
+            <script type='text/javascript'>
+                googletag.cmd.push(function() {
+                    googletag.display('div-2');
+                });
+
+            </script>
+        </div>
+
+        
+    </body>
+</html>
