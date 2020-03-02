@@ -1,3 +1,10 @@
+<!--
+Test cases when RTB publisher could not provide Criteo a cookie sync URL with userid macro, for criteo to put inside PMC tagging pixel
+- criteo will pass criteo cookie value to this API as URL parameter
+
+instead they require criteo providing cookie sync URL for publisher side to retrieve criteo cookie using JAVASCRIPT
+this page is to test how it works
+-->
 
 <!-- Request sent via a script tag -->
 <script src="https://gum.criteo.com/sync?c=400&a=1&r=2&j=myCallback"></script>
