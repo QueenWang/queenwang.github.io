@@ -1,0 +1,164 @@
+<html>
+<!--
+this is a test code that R&D is working on. 
+copied from gitlab GSTM sandbox, native asset test file
+
+-->
+    <head>
+        <link rel="icon" type="image/png" href="/favicon.png">
+        <script async src="https://www.googletagservices.com/tag/js/gpt.js"></script>
+        <script async src="https://acdn.adnxs.com/prebid/not-for-prod/1/prebid.js"></script>
+
+        <script>
+            var googletag = googletag || {};
+            googletag.cmd = googletag.cmd || [];
+
+            var pbjs = pbjs || {};
+            pbjs.que = pbjs.que || [];
+            var PREBID_TIMEOUT = 15000;
+
+            var date = new Date().getTime();
+
+            function initAdserver() {
+                if (pbjs.initAdserverSet) return;
+
+                googletag.cmd.push(function() {
+                    pbjs.que.push(function() {
+                        pbjs.setTargetingForGPTAsync();
+                        googletag.pubads().refresh();
+                    });
+                });
+
+                pbjs.initAdserverSet = true;
+            }
+
+            // Load GPT when timeout is reached.
+            setTimeout(initAdserver, PREBID_TIMEOUT);
+
+            pbjs.que.push(function() {
+
+                pbjs.setConfig({
+                    debug: true,
+                    enableSendAllBids: false
+                });
+
+                var allSlotsBidWon = function allSlotsBidWon() {
+                    console.log('allSlotsBidWon called');
+                };
+
+                pbjs.onEvent('bidWon', allSlotsBidWon);
+
+                var adUnits = [{
+                        code: '/13185555/PREBID_NATIVE_TEST',
+                        sizes: [
+                            [0, 0]
+                        ],
+                        mediaTypes: {
+                            native: {
+                                title: {
+                                    required: true,
+                                    sendId: true //will pass
+                                },
+                                image: {
+                                    required: true,
+                                    sendId: true //will pass
+                                },
+                                sponsoredBy: {
+                                    required: true
+                                },
+								clickUrl: {
+                                    required: true,
+                                    sendId: true //will pass
+                                }
+                            }
+                        },
+                        bids: [{
+                            bidder: 'criteo',
+                            params: {
+                                zoneId: 1252386
+                            }
+                        }]
+                    },
+                    // {
+                    //     code: '/19968336/prebid_native_example_2',
+                    //     sizes: [
+                    //         [1, 1]
+                    //     ],
+                    //     mediaTypes: {
+                    //         native: {
+                    //             title: {
+                    //                 required: true
+                    //             },
+                    //             body: {
+                    //                 required: true
+                    //             },
+                    //             image: {
+                    //                 required: true
+                    //             },
+                    //             sponsoredBy: {
+                    //                 required: true
+                    //             },
+                    //             icon: {
+                    //                 required: false
+                    //             },
+                    //         }
+                    //     },
+                    //     bids: [{
+                    //         bidder: 'criteo',
+                    //         params: {
+                    //             zoneId: 1252386
+                    //         }
+                    //     }]
+                    // }
+                ];
+
+                pbjs.addAdUnits(adUnits);
+                pbjs.requestBids({
+                    bidsBackHandler: function(bidResponses) {
+                        initAdserver();
+                    }
+                });
+            });
+
+        </script>
+
+
+        <script>
+            // GPT setup
+            googletag.cmd.push(function() {
+                var slot1 = googletag.defineSlot('/13185555/PREBID_NATIVE_TEST', ['fluid'], 'div-gpt-ad-1559834476711-0').addService(googletag.pubads());
+                // var slot2 = googletag.defineSlot('/13185555/PREBID_NATIVE_TEST', 'fluid', 'div-2').addService(googletag.pubads());
+                googletag.pubads().disableInitialLoad();
+                googletag.pubads().enableSingleRequest();
+                googletag.enableServices();
+            });
+
+        </script>
+    </head>
+
+    <body>
+
+        <h2>Prebid Native</h2>
+        <div id='div-gpt-ad-1559834476711-0'>
+            <p>No response</p>
+            <script type='text/javascript'>
+                googletag.cmd.push(function() {
+                    googletag.display('div-gpt-ad-1559834476711-0');
+                });
+            </script>
+        </div>
+
+        <br>
+        <br>
+
+        <div id='div-2'>
+            <p>No response</p>
+            <script type='text/javascript'>
+                googletag.cmd.push(function() {
+                    googletag.display('div-2');
+                });
+            </script>
+        </div>
+    </body>
+
+</html>
