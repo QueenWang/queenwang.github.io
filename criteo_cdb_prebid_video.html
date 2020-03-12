@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<!--
+    ad unit example code http://prebid.org/dev-docs/bidders.html#criteo
+    prebid basic example http://prebid.org/dev-docs/examples/basic-example.html
+
+next step: [done]change google ad unit to my test ad unit (having criteo line items)
+add video test
+    - test 3x3 zoneid 1477073
+
+key values - banner
+prev_scp: hb_format_criteo=banner&hb_source_criteo=client&hb_size_criteo=300x600&hb_pb_criteo=1.00&hb_adid_criteo=299e2da2-0fc6-462f-91c5-14299004dbbc&hb_bidder_criteo=criteo&hb_format=banner&hb_source=client&hb_size=300x600&hb_pb=1.00&hb_adid=299e2da2-0fc6-462f-91c5-14299004dbbc&hb_bidder=criteo|hb_format_criteo=banner&hb_source_criteo=client&hb_size_criteo=970x250&hb_pb_criteo=1.10&hb_adid_criteo=0db36e35-b892-49f4-9549-74748cf112e8&hb_bidder_criteo=criteo&hb_format=banner&hb_source=client&hb_size=970x250&hb_pb=1.10&hb_adid=0db36e35-b892-49f4-9549-74748cf112e8&hb_bidder=criteo
+
+key values - video
+cust_params: hb_uuid=undefined&hb_cache_id=undefined
+
+cdb response 
+{
+	"sid": "OjjAUteMn5Qn266GD7xU8uaEG/2XhKPqoxmt+FijNfLevjwi8iqwfinbI2P4QPpSkUnP3yMtpVQSCajfcrus4/c5esEziK//Rggw+iZexD8=",
+	"slots": [{
+		"slotid": "8d3079ef844b449e80bf29970cc4889b",
+		"impid": "div-1",
+		"arbitrageid": "5df1ac333f958884877733944175e700",
+		"zoneid": 1416091,
+		"cpm": 1.008481740951538,
+		"currency": "USD",
+		"width": 300,
+		"height": 600,
+		"creative": "<iframe id='48049b09' name='48049b09' src='https://ads.eu.criteo.com/delivery/r/afr.php?did=5df1ac333f958884877733944175e700&u=%7CN3bgGi%2FZf5%2B6j8dsbEwfaItYC6E3v0hSdEUW8LtV10M%3D%7C&c1=djqBiwJUajgo37RlhGqC5IfU-usp2QnVZ0N6qFTVHW2K3wHQF5b3aTXTRdjmh3x9OMNCb2IDCXbOq56jLdJ5HyUUzFW1xkuNkZEwzU7b0zdwNiO5_x0Eye49ac5ZRJLr8CBm9exz_kMSTU2ifOLfwMHpjikVtuxgGt4cYdZqWTj7Y0Gme-a7pfz2Q_5LPvJbJIfcvenfrCfKxHXBIyZXhPNISLx-x866WP0ghX1jqAgrCjwAvX9t4VZmGcPFhcTiXeJS63kSHvyRMA87HdgW0YvqlIA8h2cCdBNuZviqltavVKvw-YeBAdst9mEOG_6zM6meQl0JYI9SH7yFJuyyrOIXWxfrjlaWJmQ04uUARp8trYC-2TepOPaAEGXZ2yUVis26ZMPGvTj03I_638myrYmdoPr2cMmehB6vZSUs_u1OeJetwEiC_BNqvcBI8DMqf6csYBjBezV9KMgjnpIj1g' framespacing='0' frameborder='no' scrolling='no' width='300' height='600'></iframe>",
+		"video": false,
+		"deal": ""
+	}, {
+		"slotid": "3b630ef85747451bba242b45b5b1cce6",
+		"impid": "div-2",
+		"arbitrageid": "5df1ac333f958884877733944175e710",
+		"zoneid": 1416092,
+		"cpm": 1.1043214797973633,
+		"currency": "USD",
+		"width": 970,
+		"height": 250,
+		"creative": "<iframe id='0043af67' name='0043af67' src='https://ads.eu.criteo.com/delivery/r/afr.php?did=5df1ac333f958884877733944175e710&u=%7CN3bgGi%2FZf5%2B6j8dsbEwfaItYC6E3v0hSdEUW8LtV10M%3D%7C&c1=djqBiwJUajgo37RlhGqC5IfU-usp2QnVbLzecsyXPRGLut4nyC4ozBBkahNEgfBx9_sAXMhu-2gxruxQdIdDKMA1RJDm51LhgYjzYBMBcMSWdphnpRZZaGALYaW6ApRKm2ZlR-FWL1WDyBEY5W59Ppw19hQ26YfkUZjRZAljZDP-qkzF2U8x0zqtKH2o6uR71KcS84Sq23syYQDCq433g0nSYTydakpLTL_Vb0iVXmGLS1qxxgl6VmYPedDknvzURnIGaVMSTh7-PYEuKn_iRxhRj_vB4SI1DlVSxGD9RTl7r1FPXww4MTDtOr8Lgrmq2JTjDBGZJLePuhjL41KPlRBwkdmiyb4QjRWOzO_Lc6Lcr3ULamx9uvp8836zgl967w6XD0Ea3eB_SKcb1fKVZ2b71wwifKmznnOwyT282TTBQ_716_NUoHYnx9lQzanmeO06XC8ojqN1rMKovtqtLg' framespacing='0' frameborder='no' scrolling='no' width='970' height='250'></iframe>",
+		"video": false,
+		"deal": ""
+	}, {
+		"slotid": "69534f729dec47e890c098194fca96c6",
+		"impid": "video1",
+		"arbitrageid": "5df1ac333f958884877733944175e720",
+		"zoneid": 1477073,
+		"cpm": 0.8577612042427063,
+		"currency": "USD",
+		"width": 640,
+		"height": 480,
+		"creative": "<VAST version=\"3.0\"><Ad id=\"Criteo_ABC\"><Wrapper><AdSystem>Criteo</AdSystem><VASTAdTagURI><![CDATA[https://ads.eu.criteo.com/delivery/r/0.1/vast.php?did=5df1ac333f958884877733944175e720&u=%7CN3bgGi%2FZf5%2B6j8dsbEwfaItYC6E3v0hSdEUW8LtV10M%3D%7C&c1=rlYAouQ1R7_wPt4pHlOpTD3vVvVVCiiDMgsZA9C2uGDOC40iR7_E69WYIl02rI1VnlxjLAFEzw4q1D9DI0EuZpEz8PUjLAfny4RmAy-a9L77dX52KRsjfiMuWJWqMRdtGux891YYlgtvjlWB1n6ZyH7OUJo3ANF_U58rgQYEXWPCxygVRKxh1ZIMwwLsak9eQ1123GTGywPgfrNae1qmPaGLQ-uarOMr0a6aqxDgsI8pJMsy15O_D2vZtPAptO9w8ytpTCWuf_Xo6KRVc2fCvaYij7VuyRco8fgMH_-wW2HAI4NHUu-yPNo5VvEywNDtNHn4vaWPS9YbiBXQz7kuwF4JbiEZfyIFZD_n3MIvLc99ZywJXgjBgks5f0JgXURSuhxmk1C8SWhhvXuaUj4MsyLEpOpzenKZ8Z0MDMqwSMmGdFT18LrK_LfQU2EvXjxHl_OJzOzPOy6JutTwMuyT3BOWeOMJrmth]]></VASTAdTagURI><Impression></Impression></Wrapper></Ad></VAST>",
+		"displayurl": "https://ads.eu.criteo.com/delivery/r/0.1/vast.php?did=5df1ac333f958884877733944175e720&u=%7CN3bgGi%2FZf5%2B6j8dsbEwfaItYC6E3v0hSdEUW8LtV10M%3D%7C&c1=rlYAouQ1R7_wPt4pHlOpTD3vVvVVCiiDMgsZA9C2uGDOC40iR7_E69WYIl02rI1VnlxjLAFEzw4q1D9DI0EuZpEz8PUjLAfny4RmAy-a9L77dX52KRsjfiMuWJWqMRdtGux891YYlgtvjlWB1n6ZyH7OUJo3ANF_U58rgQYEXWPCxygVRKxh1ZIMwwLsak9eQ1123GTGywPgfrNae1qmPaGLQ-uarOMr0a6aqxDgsI8pJMsy15O_D2vZtPAptO9w8ytpTCWuf_Xo6KRVc2fCvaYij7VuyRco8fgMH_-wW2HAI4NHUu-yPNo5VvEywNDtNHn4vaWPS9YbiBXQz7kuwF4JbiEZfyIFZD_n3MIvLc99ZywJXgjBgks5f0JgXURSuhxmk1C8SWhhvXuaUj4MsyLEpOpzenKZ8Z0MDMqwSMmGdFT18LrK_LfQU2EvXjxHl_OJzOzPOy6JutTwMuyT3BOWeOMJrmth",
+		"video": true,
+		"deal": ""
+	}],
+	"exd": {
+		"slots": [{
+			"imp_id": "8d3079ef844b449e80bf29970cc4889b",
+			"ad_unit_id": "div-1",
+			"zone_id": 1416091,
+			"ttl": 3600,
+			"is_dsc": false
+		}, {
+			"imp_id": "3b630ef85747451bba242b45b5b1cce6",
+			"ad_unit_id": "div-2",
+			"zone_id": 1416092,
+			"ttl": 3600,
+			"is_dsc": false
+		}, {
+			"imp_id": "69534f729dec47e890c098194fca96c6",
+			"ad_unit_id": "video1",
+			"zone_id": 1477073,
+			"ttl": 3600,
+			"is_dsc": false
+		}]
+	}
+}
+-->
+<html>
+    <head>
+        <title>Prebid Test</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    
+    <body>
+        <p> == PREBID TEST PAGE == </p>
+        
+
+        <script async src="//www.googletagservices.com/tag/js/gpt.js"></script>
+        <!--
+        <script async src="//acdn.adnxs.com/prebid/not-for-prod/1/prebid.js"></script>
+        -->
+        <script async src="prebid2.43.0.js"></script> <!-- only criteo and appnexus adaptor, not include DFP video module-->
+        
+        
+        <!-- use recent version of videojs to ensure proper functioning with the iOS devices -->
+         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/video.js/6.4.0/video-js.css">
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/video.js/6.4.0/video.js"></script>
+        <!-- videojs-vast-vpaid -->
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/videojs-vast-vpaid/2.0.2/videojs.vast.vpaid.min.css" rel="stylesheet">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/videojs-vast-vpaid/2.0.2/videojs_5.vast.vpaid.min.js"></script>                 
+
+        <script>
+            var div_1_sizes = [
+                [300, 250],
+                [300, 600]
+            ];
+            var div_2_sizes = [
+                [728, 90],
+                [970, 250]
+            ];
+            var PREBID_TIMEOUT = 10000; //increase timeout to big number
+            var FAILSAFE_TIMEOUT = 30000;
+
+            var adUnits = [
+                {
+                    code: 'div-1', //IMPORTANT: support both ad unit code and div id, if pub able to differeciate by ad unit
+                    mediaTypes: {
+                        banner: {
+                            sizes: div_1_sizes
+                        }
+                    },
+                    bids: [
+                        {
+                            bidder: 'appnexus',
+                            params: {
+                                placementId: 13144370
+                            }
+                        },
+                        {
+                            bidder: 'criteo',
+                            params: {
+                                //networkId: 9111
+                                zoneId: 1416091
+                            }
+                        }
+                    ]
+                },
+                {
+                    code: 'div-2',
+                    mediaTypes: {
+                        banner: {
+                            sizes: div_2_sizes
+                        }
+                    },
+                    bids: [
+                        {
+                            bidder: 'appnexus',
+                            params: {
+                                placementId: 13144370
+                            }
+                        },
+                        {
+                            bidder: 'criteo',
+                            params: {
+                                //networkId: 9111
+                                zoneId: 1416092
+                            }
+                        }
+                    ]
+                }
+                
+                
+            ];
+            
+            
+            //video ad unit test
+            //http://prebid.org/dev-docs/bidders.html#criteo
+            var videoAdUnit = 
+                {
+                    code: 'video1',
+                    mediaTypes: {
+                        video: {
+                            playerSize: [640, 480],
+                            context: 'instream',
+                            mimes: ["video/mp4"],
+                            maxduration: 30,
+                            api: [1, 2],
+                            playerSize: [640,480],
+                            protocols: [2, 3]
+                        }
+                    },
+                    bids: [{
+                        bidder: 'criteo',
+                        params: {
+                            zoneId: 1477073,
+                            video: {
+                                skip: 0,
+                                playbackmethod: 1,
+                                placement: 1,
+                            }
+                        }
+                    }]
+                };
+           
+
+            // ======== DO NOT EDIT BELOW THIS LINE =========== //
+            var googletag = googletag || {};
+            googletag.cmd = googletag.cmd || [];
+            googletag.cmd.push(function() {
+                googletag.pubads().disableInitialLoad();
+            });
+
+            var pbjs = pbjs || {};
+            pbjs.que = pbjs.que || [];
+
+            pbjs.que.push(function() {
+                pbjs.addAdUnits(adUnits);
+                pbjs.addAdUnits(videoAdUnit);
+                
+                //instream video with banner example http://prebid.org/dev-docs/examples/instream-banner-mix.html
+                pbjs.setConfig({
+                    debug: true,
+                    cache: {
+                        url: 'https://prebid.adnxs.com/pbc/v1/cache'  //very important, to activate cache from appnexus
+                    }
+                });
+                
+                pbjs.requestBids({
+                    bidsBackHandler: initAdserver,
+                    timeout: PREBID_TIMEOUT
+                });
+            });
+
+            function initAdserver() {
+                if (pbjs.initAdserverSet) return;
+                pbjs.initAdserverSet = true;
+                googletag.cmd.push(function() {
+                    pbjs.que.push(function() {
+                        pbjs.setTargetingForGPTAsync();
+                        googletag.pubads().refresh();
+                    });
+                });
+                
+                //handling video ad call back
+                //http://prebid.org/dev-docs/examples/instream-banner-mix.html
+                //http://prebid.org/dev-docs/show-video-with-a-dfp-video-tag.html#request-bids-build-video-url
+                // Build DFP URL with targeting for videoAdUnit
+                console.log("Kun Test - DFP is going to build video url wiht prebid ad unit infor plus DFP slot path");
+                console.log(videoAdUnit);
+                
+                var videoUrl = pbjs.adServers.dfp.buildVideoUrl({
+                    adUnit: videoAdUnit,
+                    params: {
+                        //iu: '/19968336/prebid_cache_video_adunit' //test ad unit from prebid official
+                        iu: '/140800857/kun-test-cdb--prebid-video'
+                   
+                    }
+                });
+                console.log("Kun Test - dfp built video URL = "+videoUrl);
+                // Pass URL to Video player to make final DFP call
+                invokeVideoPlayer(videoUrl);
+            }
+            // in case PBJS doesn't load
+            setTimeout(function() {
+                initAdserver();
+            }, FAILSAFE_TIMEOUT);
+            
+            /*
+             * /140800857/kun-test-responsive
+             * DFP ad unit for CDB SA TEST, sizes 'fluid', [1, 1], [160, 600], [728, 90], [300, 600], [320, 50], [970, 250], [300, 250]
+             */
+            googletag.cmd.push(function() {
+                googletag.defineSlot('/140800857/kun-test-responsive', div_1_sizes, 'div-1').addService(googletag.pubads());
+                googletag.pubads().enableSingleRequest();
+                googletag.enableServices();
+            });
+            googletag.cmd.push(function() {
+                googletag.defineSlot('/140800857/kun-test-responsive', div_2_sizes, 'div-2').addService(googletag.pubads());
+                googletag.pubads().enableSingleRequest();
+                googletag.enableServices();
+            });
+
+        </script>
+
+        <h2>Basic Prebid.js Example</h2>
+        <h5>Div-1</h5>
+        <div id='div-1'>
+            <script type='text/javascript'>
+                googletag.cmd.push(function() {
+                    googletag.display('div-1');
+                });
+
+            </script>
+        </div>
+
+        <br>
+
+        <h5>Div-2</h5>
+        <div id='div-2'>
+            <script type='text/javascript'>
+                googletag.cmd.push(function() {
+                    googletag.display('div-2');
+                });
+
+            </script>
+        </div>
+
+        
+        <!-- invoke video player for prebid video url 
+        videoJS complerte example http://prebid.org/examples/video/instream/videojs/pb-ve-videojs.html
+        --> 
+        <div class="example-video-container">
+        <video id="vid1" class="video-js vjs-default-skin vjs-big-play-centered" controls
+          data-setup='{}'
+          width='640'
+          height='480'>
+          <source src="http://vjs.zencdn.net/v/oceans.mp4" type='video/mp4'/>
+          <source src="http://vjs.zencdn.net/v/oceans.webm" type='video/webm'/>
+          <source src="http://vjs.zencdn.net/v/oceans.ogv" type='video/ogg'/>
+        </video>
+      </div>
+
+      <script>
+        function invokeVideoPlayer(url) {
+          videojs("vid1").ready(function() {
+            this.vastClient({
+              adTagUrl: url,
+              playAdAlways: true,
+              verbosity: 0,
+              vpaidFlashLoaderPath: "https://github.com/MailOnline/videojs-vast-vpaid/blob/RELEASE/bin/VPAIDFlash.swf?raw=true",
+              autoplay: true
+            });
+            this.muted(true);
+            this.play();
+          });
+        }
+      </script>
+        
+    </body>
+</html>
