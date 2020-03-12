@@ -3,7 +3,7 @@
    ad unit example code http://prebid.org/dev-docs/bidders.html#criteo
     prebid basic example http://prebid.org/dev-docs/examples/basic-example.html
 
-Test objective is to test both instream and outstream placements via prebid video for Criteo.
+Test objective is to test outstream placements via prebid video for Criteo.
 
 -->
 <html>
@@ -94,39 +94,9 @@ Test objective is to test both instream and outstream placements via prebid vide
                 
             ];
             
-            
-            //video ad unit test
-            //http://prebid.org/dev-docs/bidders.html#criteo
-            var videoAdUnit = 
-                {
-                    code: 'video1',
-                    mediaTypes: {
-                        video: {
-                            playerSize: [640, 480],
-                            context: 'instream',
-                            mimes: ["video/mp4"],
-                            maxduration: 30,
-                            api: [1, 2],
-                            playerSize: [640,480],
-                            protocols: [2, 3]
-                        }
-                    },
-                    bids: [{
-                        bidder: 'criteo',
-                        params: {
-                            zoneId: 1477073,
-		            //networkId: 9111,
-                            video: {
-                                skip: 0,
-                                playbackmethod: 1,
-                                placement: 1,
-                            }
-                        }
-                    }]
-                };
            
 	    //outstream video ads http://prebid.org/dev-docs/show-outstream-video-ads.html
-	    var videoAdUnit2_putstream = 
+	    var videoAdUnit = 
                 {
                     code: 'video2-outstream',
                     mediaTypes: {
@@ -182,14 +152,16 @@ Test objective is to test both instream and outstream placements via prebid vide
             pbjs.que.push(function() {
                 pbjs.addAdUnits(adUnits);
                 pbjs.addAdUnits(videoAdUnit);
-                pbjs.addAdUnits(videoAdUnit2_outstream);
-		    
-                //instream video with banner example http://prebid.org/dev-docs/examples/instream-banner-mix.html
+
+               
                 pbjs.setConfig({
-                    debug: false,
+                    debug: false
+	            /*
+		    //instream video with banner example http://prebid.org/dev-docs/examples/instream-banner-mix.html
                     cache: {
                         url: 'https://prebid.adnxs.com/pbc/v1/cache'  //very important, to activate cache from appnexus
                     }
+		    */
                 });
                 
                 pbjs.requestBids({
@@ -203,27 +175,6 @@ Test objective is to test both instream and outstream placements via prebid vide
                 pbjs.initAdserverSet = true;
                 googletag.cmd.push(function() {
                     pbjs.que.push(function() {
-			 
-			 //*** instream video video1 handling ***
-			//handling video ad call back
-			//http://prebid.org/dev-docs/examples/instream-banner-mix.html
-			//http://prebid.org/dev-docs/show-video-with-a-dfp-video-tag.html#request-bids-build-video-url
-			// Build DFP URL with targeting for videoAdUnit
-			console.log("Kun Test - DFP is going to build video url wiht prebid ad unit infor plus DFP slot path");
-			console.log(videoAdUnit);
-
-			var videoUrl = pbjs.adServers.dfp.buildVideoUrl({
-			    adUnit: videoAdUnit,
-			    params: {
-				//iu: '/19968336/prebid_cache_video_adunit' //test ad unit from prebid official
-				iu: '/140800857/kun-test-cdb--prebid-video'
-
-			    }
-			});
-			console.log("Kun Test - dfp built video URL = "+videoUrl);
-			// Pass URL to Video player to make final DFP call
-			invokeVideoPlayer(videoUrl);
-			//*** END OF instream video video1 handling ***
 			    
 			//normal codes
                         pbjs.setTargetingForGPTAsync();
@@ -252,12 +203,9 @@ Test objective is to test both instream and outstream placements via prebid vide
                 googletag.pubads().enableSingleRequest();
                 googletag.enableServices();
             });
-	    
-	    //*** instream video does not require defineSlot, instead the ad unit code is defined inside the callback buildVideoUrl
-	    //ad unit /140800857/kun-test-cdb--prebid-video
-		
+	    	
 	    //*** outstream video slot
-	    //using same ad unit /140800857/kun-test-cdb--prebid-video
+	    //using same ad unit /140800857/kun-test-cdb--prebid-video, as used for instream test
 	    googletag.cmd.push(function() {
 		var slot1 = googletag.defineSlot('/140800857/kun-test-cdb--prebid-video', [[1, 1]], 'video2-outstream').addService(googletag.pubads());
 		googletag.pubads().disableInitialLoad();
@@ -288,38 +236,6 @@ Test objective is to test both instream and outstream placements via prebid vide
 
             </script>
         </div>
-
-        <h5>Video Placement for Instream, using 3x3 test video zoneid, DFP test unit is /140800857/kun-test-cdb--prebid-video</h5>
-        <!-- invoke video player for prebid video url 
-        videoJS complerte example http://prebid.org/examples/video/instream/videojs/pb-ve-videojs.html
-        --> 
-        <div class="example-video-container">
-        <video id="vid1" class="video-js vjs-default-skin vjs-big-play-centered" controls
-          data-setup='{}'
-          width='640'
-          height='480'>
-          <source src="http://vjs.zencdn.net/v/oceans.mp4" type='video/mp4'/>
-          <source src="http://vjs.zencdn.net/v/oceans.webm" type='video/webm'/>
-          <source src="http://vjs.zencdn.net/v/oceans.ogv" type='video/ogg'/>
-        </video>
-      </div>
-
-      <script>
-        function invokeVideoPlayer(url) {
-          videojs("vid1").ready(function() {
-            this.vastClient({
-              adTagUrl: url,
-              playAdAlways: true,
-              verbosity: 0,
-              vpaidFlashLoaderPath: "https://github.com/MailOnline/videojs-vast-vpaid/blob/RELEASE/bin/VPAIDFlash.swf?raw=true",
-              autoplay: true
-            });
-            this.muted(true);
-            this.play();
-          });
-        }
-      </script>
-    
 	    
 	    
 	<h5>Video Placement for outstream, using 3x3 test video zoneid, DFP test unit is /140800857/kun-test-cdb--prebid-video</h5>
