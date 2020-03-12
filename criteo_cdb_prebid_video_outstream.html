@@ -4,6 +4,8 @@
     prebid basic example http://prebid.org/dev-docs/examples/basic-example.html
 
 Test objective is to test outstream placements via prebid video for Criteo.
+STATUS: not working yet
+
 
 -->
 <html>
@@ -106,7 +108,7 @@ Test objective is to test outstream placements via prebid video for Criteo.
                             //protocols: [2, 3]
                         }
                     },
-			/*
+		
 		    //renderer is required for outstream video, publisher has to declare this to handle rendering
 	            //below is copied from prebid example
 		    renderer: {
@@ -120,7 +122,7 @@ Test objective is to test outstream placements via prebid video for Criteo.
 			    });
 			}
 		    },
-		    */
+		   
                     bids: [{
                         bidder: 'criteo',
                         params: {
