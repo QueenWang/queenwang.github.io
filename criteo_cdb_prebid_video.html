@@ -114,8 +114,8 @@ Test objective is to test both instream and outstream placements via prebid vide
                     bids: [{
                         bidder: 'criteo',
                         params: {
-                            //zoneId: 1477073,
-		            networkId: 9111,
+                            zoneId: 1477073,
+		            //networkId: 9111,
                             video: {
                                 skip: 0,
                                 playbackmethod: 1,
@@ -126,13 +126,13 @@ Test objective is to test both instream and outstream placements via prebid vide
                 };
            
 	    //outstream video ads http://prebid.org/dev-docs/show-outstream-video-ads.html
-	    var videoAdUnit2_outstream = 
+	    var videoAdUnit2_putstream = 
                 {
                     code: 'video2-outstream',
                     mediaTypes: {
                         video: {
                             playerSize: [640, 480],
-                            context: 'outstream'
+                            context: 'outsoream'
                             //mimes: ["video/mp4"],
                             //maxduration: 30,
                             //api: [1, 2],
@@ -156,8 +156,8 @@ Test objective is to test both instream and outstream placements via prebid vide
                     bids: [{
                         bidder: 'criteo',
                         params: {
-                            //zoneId: 1477073,
-		            networkId: 9111,
+                            zoneId: 1477073,
+		            //networkId: 9111,
                             video: {
                                 skip: 0,
                                 playbackmethod: 1,
@@ -236,7 +236,7 @@ Test objective is to test both instream and outstream placements via prebid vide
                 initAdserver();
             }, FAILSAFE_TIMEOUT);
             
-            /*
+            /*** banner slot
              * /140800857/kun-test-responsive
              * DFP ad unit for CDB SA TEST, sizes 'fluid', [1, 1], [160, 600], [728, 90], [300, 600], [320, 50], [970, 250], [300, 250]
              */
@@ -250,7 +250,18 @@ Test objective is to test both instream and outstream placements via prebid vide
                 googletag.pubads().enableSingleRequest();
                 googletag.enableServices();
             });
-
+	    
+	    //*** instream video does not require defineSlot, instead the ad unit code is defined inside the callback buildVideoUrl
+	    //ad unit /140800857/kun-test-cdb--prebid-video
+		
+	    //*** outstream video slot
+	    //using same ad unit /140800857/kun-test-cdb--prebid-video
+	    googletag.cmd.push(function() {
+		var slot1 = googletag.defineSlot('/140800857/kun-test-cdb--prebid-video', [[1, 1]], 'video2-outstream').addService(googletag.pubads());
+		googletag.pubads().disableInitialLoad();
+		googletag.pubads().enableSingleRequest();
+		googletag.enableServices();
+	    });
         </script>
 
         <h2>Basic Prebid.js Example</h2>
@@ -306,7 +317,21 @@ Test objective is to test both instream and outstream placements via prebid vide
           });
         }
       </script>
-        
+    
+	    
+	    
+	<h5>Video Placement for outstream, using 3x3 test video zoneid, DFP test unit is /140800857/kun-test-cdb--prebid-video</h5>
+	<div id='video2-outstream'>
+	    <p>Prebid Outstream Video Ad</p>
+	    <script type='text/javascript'>
+		googletag.cmd.push(function() {
+		    googletag.display('video2-outstream');
+		});
+
+	    </script>
+	</div>
+	    
+	    
     </body>
 	
 </html>
