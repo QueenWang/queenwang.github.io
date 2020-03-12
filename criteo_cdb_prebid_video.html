@@ -132,7 +132,7 @@ Test objective is to test both instream and outstream placements via prebid vide
                     mediaTypes: {
                         video: {
                             playerSize: [640, 480],
-                            context: 'outsoream'
+                            context: 'outstream'
                             //mimes: ["video/mp4"],
                             //maxduration: 30,
                             //api: [1, 2],
@@ -140,6 +140,7 @@ Test objective is to test both instream and outstream placements via prebid vide
                             //protocols: [2, 3]
                         }
                     },
+			/*
 		    //renderer is required for outstream video, publisher has to declare this to handle rendering
 	            //below is copied from prebid example
 		    renderer: {
@@ -153,6 +154,7 @@ Test objective is to test both instream and outstream placements via prebid vide
 			    });
 			}
 		    },
+		    */
                     bids: [{
                         bidder: 'criteo',
                         params: {
