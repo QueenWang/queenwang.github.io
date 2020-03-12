@@ -207,8 +207,7 @@ Test objective is to test outstream placements via prebid video for Criteo.
 	    //*** outstream video slot
 	    //using same ad unit /140800857/kun-test-cdb--prebid-video, as used for instream test
 	    googletag.cmd.push(function() {
-		var slot1 = googletag.defineSlot('/140800857/kun-test-cdb--prebid-video', [[1, 1]], 'video2-outstream').addService(googletag.pubads());
-		googletag.pubads().disableInitialLoad();
+		var slot1 = googletag.defineSlot('/140800857/kun-test-cdb--prebid-video', [[1, 1]], 'video2-outstream').addService(googletag.pubads());		
 		googletag.pubads().enableSingleRequest();
 		googletag.enableServices();
 	    });
