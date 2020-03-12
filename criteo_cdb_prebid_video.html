@@ -158,29 +158,33 @@ Test objective is to test both instream and outstream placements via prebid vide
                 pbjs.initAdserverSet = true;
                 googletag.cmd.push(function() {
                     pbjs.que.push(function() {
+			    
+			//handling video ad call back
+			//http://prebid.org/dev-docs/examples/instream-banner-mix.html
+			//http://prebid.org/dev-docs/show-video-with-a-dfp-video-tag.html#request-bids-build-video-url
+			// Build DFP URL with targeting for videoAdUnit
+			console.log("Kun Test - DFP is going to build video url wiht prebid ad unit infor plus DFP slot path");
+			console.log(videoAdUnit);
+
+			var videoUrl = pbjs.adServers.dfp.buildVideoUrl({
+			    adUnit: videoAdUnit,
+			    params: {
+				//iu: '/19968336/prebid_cache_video_adunit' //test ad unit from prebid official
+				iu: '/140800857/kun-test-cdb--prebid-video'
+
+			    }
+			});
+			console.log("Kun Test - dfp built video URL = "+videoUrl);
+			// Pass URL to Video player to make final DFP call
+			invokeVideoPlayer(videoUrl);
+			
+			//normal codes
                         pbjs.setTargetingForGPTAsync();
                         googletag.pubads().refresh();
                     });
                 });
                 
-                //handling video ad call back
-                //http://prebid.org/dev-docs/examples/instream-banner-mix.html
-                //http://prebid.org/dev-docs/show-video-with-a-dfp-video-tag.html#request-bids-build-video-url
-                // Build DFP URL with targeting for videoAdUnit
-                console.log("Kun Test - DFP is going to build video url wiht prebid ad unit infor plus DFP slot path");
-                console.log(videoAdUnit);
-                
-                var videoUrl = pbjs.adServers.dfp.buildVideoUrl({
-                    adUnit: videoAdUnit,
-                    params: {
-                        //iu: '/19968336/prebid_cache_video_adunit' //test ad unit from prebid official
-                        iu: '/140800857/kun-test-cdb--prebid-video'
-                   
-                    }
-                });
-                console.log("Kun Test - dfp built video URL = "+videoUrl);
-                // Pass URL to Video player to make final DFP call
-                invokeVideoPlayer(videoUrl);
+
             }
             // in case PBJS doesn't load
             setTimeout(function() {
