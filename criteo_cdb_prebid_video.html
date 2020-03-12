@@ -114,7 +114,8 @@ Test objective is to test both instream and outstream placements via prebid vide
                     bids: [{
                         bidder: 'criteo',
                         params: {
-                            zoneId: 1477073,
+                            //zoneId: 1477073,
+		            networkId: 9111,
                             video: {
                                 skip: 0,
                                 playbackmethod: 1,
@@ -124,6 +125,47 @@ Test objective is to test both instream and outstream placements via prebid vide
                     }]
                 };
            
+	    //outstream video ads http://prebid.org/dev-docs/show-outstream-video-ads.html
+	    var videoAdUnit2_outstream = 
+                {
+                    code: 'video2-outstream',
+                    mediaTypes: {
+                        video: {
+                            playerSize: [640, 480],
+                            context: 'outstream'
+                            //mimes: ["video/mp4"],
+                            //maxduration: 30,
+                            //api: [1, 2],
+                           // playerSize: [640,480],
+                            //protocols: [2, 3]
+                        }
+                    },
+		    //renderer is required for outstream video, publisher has to declare this to handle rendering
+	            //below is copied from prebid example
+		    renderer: {
+			url: 'https://acdn.adnxs.com/video/outstream/ANOutstreamVideo.js',
+			render: function (bid) {
+			    console.log("Kun Test: outstream video render triggered");
+			    console.log(bid);
+			    ANOutstreamVideo.renderAd({
+				targetId: bid.adUnitCode,
+				adResponse: bid.adResponse,
+			    });
+			}
+		    },
+                    bids: [{
+                        bidder: 'criteo',
+                        params: {
+                            //zoneId: 1477073,
+		            networkId: 9111,
+                            video: {
+                                skip: 0,
+                                playbackmethod: 1,
+                                placement: 1,
+                            }
+                        }
+                    }]
+                };
 
             // ======== DO NOT EDIT BELOW THIS LINE =========== //
             var googletag = googletag || {};
@@ -138,7 +180,8 @@ Test objective is to test both instream and outstream placements via prebid vide
             pbjs.que.push(function() {
                 pbjs.addAdUnits(adUnits);
                 pbjs.addAdUnits(videoAdUnit);
-                
+                pbjs.addAdUnits(videoAdUnit2_outstream);
+		    
                 //instream video with banner example http://prebid.org/dev-docs/examples/instream-banner-mix.html
                 pbjs.setConfig({
                     debug: false,
@@ -158,7 +201,8 @@ Test objective is to test both instream and outstream placements via prebid vide
                 pbjs.initAdserverSet = true;
                 googletag.cmd.push(function() {
                     pbjs.que.push(function() {
-			    
+			 
+			 //*** instream video video1 handling ***
 			//handling video ad call back
 			//http://prebid.org/dev-docs/examples/instream-banner-mix.html
 			//http://prebid.org/dev-docs/show-video-with-a-dfp-video-tag.html#request-bids-build-video-url
@@ -177,7 +221,8 @@ Test objective is to test both instream and outstream placements via prebid vide
 			console.log("Kun Test - dfp built video URL = "+videoUrl);
 			// Pass URL to Video player to make final DFP call
 			invokeVideoPlayer(videoUrl);
-			
+			//*** END OF instream video video1 handling ***
+			    
 			//normal codes
                         pbjs.setTargetingForGPTAsync();
                         googletag.pubads().refresh();
