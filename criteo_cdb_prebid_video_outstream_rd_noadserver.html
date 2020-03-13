@@ -56,7 +56,7 @@
                   {
                     bidder: 'criteo',
                     params: {
-                      zoneId: 1424176,
+                      zoneId: 1477073,
                       video: {
                         skip: 0,
                         playbackmethod: 1,
@@ -68,6 +68,8 @@
                 renderer: {
                     url: "https://players.brightcove.net/3723496277001/files/adonly.js",
                     render: function (bid) {
+                        console.log("Kun TEST: renderer function called");
+                        console.log(bid);
                         bcPlayerTools.expandAndInjectAdOnlyPlayer({
                             div: document.getElementById("div-Test-DirectBidder-Video"),
                             adTag: bid.vastUrl,
