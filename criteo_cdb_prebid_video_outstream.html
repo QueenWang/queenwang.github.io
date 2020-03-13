@@ -99,7 +99,8 @@ STATUS: not working yet
                     code: 'video2-outstream',
                     mediaTypes: {
                         video: {
-                            playerSize: [640, 480],
+                            //playerSize: [640, 480],
+		            playerSize: [300, 250],
                             context: 'outstream'
                             //mimes: ["video/mp4"],
                             //maxduration: 30,
@@ -205,9 +206,9 @@ STATUS: not working yet
 	    	
 	    //*** outstream video slot
 	    //using same ad unit /140800857/kun-test-cdb--prebid-video, as used for instream test
-	     //change to /140800857/kun-test-responsive, which accept 1x1 as well
+	     //change to /140800857/kun-test-responsive, which accept 1x1 as well, prebid oustream GAM example is using 1x1
 	    googletag.cmd.push(function() {
-		var slot1 = googletag.defineSlot('/140800857/kun-test-responsive', [[1, 1]], 'video2-outstream').addService(googletag.pubads());		
+		var slot1 = googletag.defineSlot('/140800857/kun-test-responsive', [[300, 250]], 'video2-outstream').addService(googletag.pubads());		
 		googletag.pubads().enableSingleRequest();
 		googletag.enableServices();
 	    });
