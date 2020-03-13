@@ -112,21 +112,6 @@ STATUS: not working yet
                             protocols: [2, 3]
                         }
                     },
-		    
-		    //renderer is required for outstream video, publisher has to declare this to handle rendering
-	            //below is copied from prebid example
-		    //this does not work for banner as banner will trigger this as well
-		    renderer: {
-			url: 'https://acdn.adnxs.com/video/outstream/ANOutstreamVideo.js',
-			render: function (bid) {
-			    console.log("Kun Test: outstream video render triggered");
-			    console.log(bid);
-			    ANOutstreamVideo.renderAd({
-				targetId: bid.adUnitCode,
-				adResponse: bid.adResponse,
-			    });
-			}
-		    },
                     bids: [
                         /*{
                             bidder: 'criteo',
@@ -148,7 +133,36 @@ STATUS: not working yet
 			    }
 			}
                     ]
-                }
+                },		    
+		    //renderer is required for outstream video, publisher has to declare this to handle rendering
+	            //below is copied from prebid example
+		    //this does not work for banner as banner will trigger this as well
+		    /* below is not woirking as this is from appnexus renderer
+		    renderer: {
+			url: 'https://acdn.adnxs.com/video/outstream/ANOutstreamVideo.js',
+			render: function (bid) {
+			    console.log("Kun Test: outstream video render triggered");
+			    console.log(bid);
+			    ANOutstreamVideo.renderAd({
+				targetId: bid.adUnitCode,
+				adResponse: bid.adResponse,
+			    });
+			}
+		    }, */
+		    renderer: {
+			    url: "https://players.brightcove.net/3723496277001/files/adonly.js",
+			    render: function (bid) {
+				//debugger;
+		    		console.log("Kun Test: outstream video render triggered");
+			        console.log(bid);
+				bcPlayerTools.expandAndInjectAdOnlyPlayer({
+				    div: document.getElementById("div-Test-DirectBidder-Video"),
+				    adTag: bid.vastUrl,
+				    height: 360,
+				    animationDuration: 200
+				});
+			    }
+			},
                 
             ];
             
