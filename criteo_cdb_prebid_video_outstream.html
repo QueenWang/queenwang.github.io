@@ -98,41 +98,39 @@ STATUS: not working yet
 		//tested outstream placement with banner 300x250 too (multi format, banner is good)
 		{
                     code: 'video2-outstream',
-                    mediaTypes: {
-                        /*banner: {
+		    mediaTypes: {
+			  /*banner: {
                             sizes: [[300,250]]
                         },*/
-			video: {
-                            playerSize: [640, 480],
-		            //playerSize: [300, 250],
-                            context: 'outstream',
-                            mimes: ["video/mp4"],
-                            maxduration: 30,
-                            api: [1, 2],
-                            protocols: [2, 3]
-                        }
-                    },
-                    bids: [
-                        /*{
+			  video: {
+			    context: "outstream",
+			    mimes: ["video/mp4"],
+			    maxduration: 30,
+			    api: [1, 2],
+			    playerSize: [640,480],
+			    protocols: [2, 3]
+			  }
+			},
+		    bids: [
+			/*{
                             bidder: 'criteo',
                             params: {
                                 //networkId: 9111
                                 zoneId: 1416087 //for banner 300x250
                             }
                         },*/
-			{
-		   	    bidder: 'criteo',
+			  {
+			    bidder: 'criteo',
 			    params: {
-				zoneId: 1477073, //for video 3x3
-				//networkId: 9111,
-				video: {
-				    skip: 0,
-				    playbackmethod: 1,
-				    placement: 1
-				}
+			      zoneId: 1477073,
+			      video: {
+				skip: 0,
+				playbackmethod: 1,
+				placement: 2
+			      }
 			    }
-			}
-                    ],
+			  }
+			] ,
 		    //renderer is required for outstream video, publisher has to declare this to handle rendering
 	            //below is copied from prebid example
 		    //this does not work for banner as banner will trigger this as well
