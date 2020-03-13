@@ -123,7 +123,6 @@ STATUS: not working yet
 			    });
 			}
 		    },
-		   
                     bids: [{
                         bidder: 'criteo',
                         params: {
@@ -205,10 +204,10 @@ STATUS: not working yet
             });
 	    	
 	    //*** outstream video slot
-	    //using same ad unit /140800857/kun-test-cdb--prebid-video, as used for instream test
-	     //change to /140800857/kun-test-responsive, which accept 1x1 as well, prebid oustream GAM example is using 1x1
+	    // use same banner unit /140800857/kun-test-responsive, using 300x250 size for test
+            // which accept 1x1 as well, prebid oustream GAM example is using 1x1
 	    googletag.cmd.push(function() {
-		var slot1 = googletag.defineSlot('/140800857/kun-test-responsive', [[300, 250]], 'video2-outstream').addService(googletag.pubads());		
+		googletag.defineSlot('/140800857/kun-test-responsive', [[300, 250]], 'video2-outstream').addService(googletag.pubads());		
 		googletag.pubads().enableSingleRequest();
 		googletag.enableServices();
 	    });
@@ -238,7 +237,7 @@ STATUS: not working yet
         </div>
 	    
 	    
-	<h5>Video Placement for outstream, using 3x3 test video zoneid, DFP test unit is /140800857/kun-test-cdb--prebid-video</h5>
+	<h5>Video Placement for outstream, using 3x3 test video zoneid</h5>
 	<div id='video2-outstream'>
 	    <p>Prebid Outstream Video Ad</p>
 	    <script type='text/javascript'>
