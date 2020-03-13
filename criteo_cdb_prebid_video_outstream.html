@@ -92,13 +92,16 @@ STATUS: not working yet
                         }
                     ]
                 },
-		//test outstream placement with banner 300x250
+		    
+		//oustream video ad unit
+		//outstream video ads http://prebid.org/dev-docs/show-outstream-video-ads.html
+		//tested outstream placement with banner 300x250 too (multi format, banner is good)
 		{
                     code: 'video2-outstream',
                     mediaTypes: {
-                        banner: {
+                        /*banner: {
                             sizes: [[300,250]]
-                        },
+                        },*/
 			video: {
                             //playerSize: [640, 480],
 		            playerSize: [300, 250],
@@ -127,19 +130,13 @@ STATUS: not working yet
 		    },
 		    */
                     bids: [
-                        {
-                            bidder: 'appnexus',
-                            params: {
-                                placementId: 13144370
-                            }
-                        },
-                        {
+                        /*{
                             bidder: 'criteo',
                             params: {
                                 //networkId: 9111
                                 zoneId: 1416087 //for banner 300x250
                             }
-                        },
+                        },*/
 			{
 		   	    bidder: 'criteo',
 			    params: {
@@ -154,51 +151,7 @@ STATUS: not working yet
 			}
                     ]
                 }
-		 /*   
-		//oustream video ad unit
-		//outstream video ads http://prebid.org/dev-docs/show-outstream-video-ads.html
-                {
-                    code: 'video2-outstream',
-                    mediaTypes: {
-                        video: {
-                            //playerSize: [640, 480],
-		            playerSize: [300, 250],
-                            context: 'outstream'
-                            //mimes: ["video/mp4"],
-                            //maxduration: 30,
-                            //api: [1, 2],
-                           // playerSize: [640,480],
-                            //protocols: [2, 3]
-                        }
-                    },
-		
-		    //renderer is required for outstream video, publisher has to declare this to handle rendering
-	            //below is copied from prebid example
-		    renderer: {
-			url: 'https://acdn.adnxs.com/video/outstream/ANOutstreamVideo.js',
-			render: function (bid) {
-			    console.log("Kun Test: outstream video render triggered");
-			    console.log(bid);
-			    ANOutstreamVideo.renderAd({
-				targetId: bid.adUnitCode,
-				adResponse: bid.adResponse,
-			    });
-			}
-		    },
-                    bids: [{
-                        bidder: 'criteo',
-                        params: {
-                            zoneId: 1477073,
-		            //networkId: 9111,
-                            video: {
-                                skip: 0,
-                                playbackmethod: 1,
-                                placement: 1,
-                            }
-                        }
-                    }]
-                }
-		*/
+                
             ];
             
 
