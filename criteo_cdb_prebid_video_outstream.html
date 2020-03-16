@@ -99,6 +99,9 @@ STATUS: not working yet
                 },
 		
 		//same outstream video placement, but bid using banner zone id, simulate for multi format
+		//tested outstream placement with banner 300x250 too (multi format, banner is good)
+		//MUST separate declare ad unit for banner, video. 
+		//If usings same ad unit, mutli media types, video rendered will be triggered for banner as well
 		{
                     code: 'video2-outstream',
                     mediaTypes: {
@@ -119,13 +122,9 @@ STATUS: not working yet
 		    
 		//oustream video ad unit
 		//outstream video ads http://prebid.org/dev-docs/show-outstream-video-ads.html
-		//tested outstream placement with banner 300x250 too (multi format, banner is good)
 		{
                     code: 'video2-outstream',
 		    mediaTypes: {
-			  /*banner: {
-                            sizes: [[300,250]]
-                        },*/
 			  video: {
 			    context: 'outstream',
 			    mimes: ["video/mp4"],
@@ -137,13 +136,6 @@ STATUS: not working yet
 			  }
 			},
 		    bids: [
-			/*{
-                            bidder: 'criteo',
-                            params: {
-                                //networkId: 9111
-                                zoneId: 1416087 //for banner 300x250
-                            }
-                        },*/
 			  {
 			    bidder: 'criteo',
 			    params: {
@@ -157,20 +149,6 @@ STATUS: not working yet
 			  }
 			] ,
 		    //renderer is required for outstream video, publisher has to declare this to handle rendering
-	            //below is copied from prebid example
-		    //this does not work for banner as banner will trigger this as well
-		    /* below is not woirking as this is from appnexus renderer
-		    renderer: {
-			url: 'https://acdn.adnxs.com/video/outstream/ANOutstreamVideo.js',
-			render: function (bid) {
-			    console.log("Kun Test: outstream video render triggered");
-			    console.log(bid);
-			    ANOutstreamVideo.renderAd({
-				targetId: bid.adUnitCode,
-				adResponse: bid.adResponse,
-			    });
-			}
-		    }, */
 		    //below renderer is from criteo R&D sample
 	            //IMPORTANT NOTE: pls do not share this renderer code to publisher, this is just for demo only
 		    //more infor about brightcove outstream: https://support.brightcove.com/brightcove-player-sample-outstream-ad-only-player
