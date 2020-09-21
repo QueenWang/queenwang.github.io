@@ -1,0 +1,92 @@
+<div id="pixad3844"></div>
+<script src="https://falcon-asset.pixfs.net/js/libs/prebid/3.23.0/prebid.js" async></script>
+<script>
+var pbjs = pbjs || {};
+pbjs.que = pbjs.que || [],
+    (function(config) {
+        var pbjs = window.pbjs,
+            code = config.code,
+            adUnitSizes = config.adUnitSizes,
+            adUnits = [{
+                code: code,
+                mediaTypes: {
+                    banner: {
+                        sizes: adUnitSizes
+                    }
+                },
+                bids: config.bids
+            }],
+            bidsBackHandler = function() {
+                bidsBackHandler = function() {};
+                var iframe = document.getElementById(code + '_frame'),
+                    iframeDoc = iframe.contentWindow.document;
+                params = pbjs.getAdserverTargetingForAdUnitCode(code);
+                iframeDoc.open('text/html', 'replace');
+                if (params && params.hb_adid && params.hb_pb && params.hb_pb > config.rp) {
+                    pbjs.renderAd(iframeDoc, params.hb_adid);
+                } else {
+                    iframe.width = adUnitSizes[0][0];
+                    iframe.height = adUnitSizes[0][1];
+                    iframeDoc.write(config.snippet);
+                    iframeDoc.close();
+                }
+            };
+
+        pbjs.que.push(function() {
+            pbjs.setConfig({
+                bidderTimeout: config.bidderTimeout,
+                priceGranularity: config.priceGranularity
+            });
+            pbjs.requestBids({
+                bidsBackHandler: bidsBackHandler,
+                adUnits: adUnits
+            });
+        });
+    })({
+        bidderTimeout: 2000,
+        priceGranularity: {
+            buckets: [{
+                min: 0.00,
+                max: 999.00,
+                increment: 0.01
+            }]
+        },
+        code: 'scupio-pixnet_4108_17750_18414_1_content',
+        rp: 0.01,
+        adUnitSizes: [
+            [970, 250]
+        ],
+        bids: [{
+            bidder: 'bridgewell',
+            params: {
+                ChannelID: 'CgUxODQxNBIBNhoENDEwOCIGcGl4bmV0KgwIygcQ-gEaAjE2IAE4AA'
+            }
+        }, {
+            bidder: 'appnexus',
+            params: {
+                placementId: '20180537'
+            }
+        }, {
+            bidder: 'onemobile',
+            params: {
+                dcn: '8a969178017272c8d4e8cfca07fb00cc',
+                pos: 'desktop_ros_970x250_display_hb'
+            }
+        }, {
+            bidder: 'ucfunnel',
+            params: {
+                adid: 'ad-D23422E722977A2A1B87BD6E4D43793'
+            }
+        }, {
+            bidder: 'smartadserver',
+            params: {
+                domain: 'https://prg8.smartadserver.com',
+                siteId: 341869,
+                pageId: 1195024,
+                formatId: 94654
+            }
+        }],
+        snippet: '\u003cdiv id=\"pixad3227d\"\u003e\u003c/div\u003e\r\n\u003cscript async=\u0027async\u0027 src=\"https://static.criteo.net/js/ld/publishertag.js\"\u003e\u003c/script\u003e\r\n\u003cscript\u003e\r\n(function () {\r\nvar falcon_dom = \u0027pixad3227d\u0027,\r\nfalcon_width = 970,\r\nfalcon_height = 250,\r\nfalcon_gclient = \u00272647689032095179\u0027,\r\nfalcon_gslot = \u00274518498273\u0027;\r\n\r\nvar CriteoAdUnits = { \"placements\": [\r\n{ \"slotid\": falcon_dom, \"zoneid\": 1355367 }\r\n]};\r\nvar CriteoBids=CriteoBids||{},CriteoBidsReceived=function(){for(var t in CriteoAdUnits.placements){var e=CriteoAdUnits.placements[t],i=Criteo.GetBidsForAdUnit(e.slotid);CriteoBids[e.slotid]=i.length\u003e0?i[0]:null}},CriteoDisplayAd=function(t,e,i){if(void 0===i\u0026\u0026(i=0),null!==CriteoBids[t])if(void 0===CriteoBids[t]\u0026\u0026null!==CriteoBids[t])100\u003ei\u0026\u0026setTimeout(function(){CriteoDisplayAd(t,e,i+1)},200);else{var r=document.getElementById(t);if(r){var s=document.createElement(\"iframe\");s.setAttribute(\"id\",t+\"_iframe\"),s.setAttribute(\"frameborder\",\"0\"),s.setAttribute(\"allowtransparency\",\"true\"),s.setAttribute(\"hspace\",\"0\"),s.setAttribute(\"marginwidth\",\"0\"),s.setAttribute(\"marginheight\",\"0\"),s.setAttribute(\"scrolling\",\"no\"),s.setAttribute(\"vspace\",\"0\"),s.setAttribute(\"width\",CriteoBids[t].width),s.setAttribute(\"height\",CriteoBids[t].height),r.appendChild(s);var o=\u0027\u003cscript src=\"\u0027+CriteoBids[t].displayUrl+\u0027\"\u003e\u003c/scr\u0027+\u0027ipt\u003e\u0027,d=s.contentWindow.document;d.open(),d.write(o),d.close()}}else\"function\"==typeof e\u0026\u0026e()};\r\nwindow.Criteo = window.Criteo || {}; window.Criteo.events = window.Criteo.events || [];\r\nCriteo.events.push(function() { Criteo.RequestBids(CriteoAdUnits, CriteoBidsReceived, 2000); });\r\n\r\nCriteoDisplayAd(falcon_dom, function() {\r\n/* Passback */\r\nstr = \" \u003cins class=\\\"adsbygoogle\\\" style=\\\"display:inline-block;width:\" + falcon_width +\"px;height:\" + falcon_height +\"px\\\" data-ad-client=\\\"ca-pub-\" + falcon_gclient +\"\\\" data-ad-slot=\\\"\" + falcon_gslot + \"\\\" google-ad-region=\\\"falcon\\\"\u003e \u003c\\/ins\u003e \";\r\ndocument.getElementById(falcon_dom).innerHTML = str;\r\n\r\nvar s = document.createElement(\u0027script\u0027),\r\nsn = document.getElementsByTagName(\u0027script\u0027)[0];\r\n\r\ns.src = \u0027https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js\u0027;\r\nsn.parentNode.insertBefore(s, sn);\r\n\r\n(adsbygoogle=window.adsbygoogle || []).push({});\r\n});\r\n})();\r\n\u003c/script\u003e'
+    });
+</script>
+<div id="scupio-pixnet_4108_17750_18414_1_content" style="margin:0 auto; width:970px; height:250px;"><iframe id="scupio-pixnet_4108_17750_18414_1_content_frame" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe></div>
