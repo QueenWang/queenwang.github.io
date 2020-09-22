@@ -24,6 +24,7 @@ googletag.cmd.push(function() { googletag.display('div-gpt-ad-1598610474215-0');
 <br>
 
 <h3> -- TEST 1: CDB Passback Inside Ad Server: passback to whole falcon GPT tag version -- </h3>
+<div> changed div id to avoid conflict</div>
 <!-- BEGIN CRITEO CDB -->
 <script async='async' type="text/javascript" src="//static.criteo.net/js/ld/publishertag.js"></script>
 <!-- CRITEO SLOT DIV ID, MUST BE UNIQUE PER FRAME -->
@@ -43,13 +44,13 @@ googletag.cmd.push(function() { googletag.display('div-gpt-ad-1598610474215-0');
               div.appendChild(s);
               window.googletag = window.googletag || {cmd: []};
               googletag.cmd.push(function() {
-              googletag.defineSlot('/1021267/desktop_article_top', [[970, 90], [970, 250]], 'div-gpt-ad-1598610474215-0').addService(googletag.pubads());
+              googletag.defineSlot('/1021267/desktop_article_top', [[970, 90], [970, 250]], 'div-gpt-ad-1598610474215-0-passback').addService(googletag.pubads());
               googletag.pubads().enableSingleRequest();
               googletag.enableServices();
               });
               /* /1021267/desktop_article_top */
-              div.innerHTML+= '<div id="div-gpt-ad-1598610474215-0"></div>';
-              googletag.cmd.push(function() { googletag.display('div-gpt-ad-1598610474215-0'); });
+              div.innerHTML+= '<div id="div-gpt-ad-1598610474215-0-passback"></div>';
+              googletag.cmd.push(function() { googletag.display('div-gpt-ad-1598610474215-0-passback'); });
             }
         }
  
