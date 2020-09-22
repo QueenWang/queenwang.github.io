@@ -66,3 +66,52 @@ googletag.cmd.push(function() { googletag.display('div-gpt-ad-1598610474215-0');
     }();
 </script>
 <!-- END CRITEO CDB -->
+
+
+
+<h3> -- TEST 2: CDB Passback on page: passback to GPT display ONLY -- </h3>
+<div> changed div id to avoid conflict</div>
+
+<script async src="https://securepubads.g.doubleclick.net/tag/js/gpt.js"></script>
+<script>
+window.googletag = window.googletag || {cmd: []};
+googletag.cmd.push(function() {
+googletag.defineSlot('/1021267/desktop_article_top', [[970, 90], [970, 250]], 'div-gpt-ad-1598610474215-0-passback-2').addService(googletag.pubads());
+googletag.pubads().enableSingleRequest();
+googletag.enableServices();
+});
+</script>
+
+<!-- BEGIN CRITEO CDB -->
+<script async='async' type="text/javascript" src="//static.criteo.net/js/ld/publishertag.js"></script>
+<!-- CRITEO SLOT DIV ID, MUST BE UNIQUE PER FRAME -->
+<div id="criteo_slot_1416092_2"></div>
+<script>
+    !function(){
+        /* CRITEO ZONE ID, SLOT DIV ID */
+        var criteoZoneId = 1416092;
+        var criteoSlotId = "criteo_slot_1416092_2";
+         
+        var passback = function () {
+            /* CONFIG YOUR PASSBACK HERE, USE ASYNC JS */
+            console.log("passback test 1");
+            var slotid = "criteo_slot_1416092_2"; var div = document.getElementById(slotid);
+            if (div) {
+              /* /1021267/desktop_article_top */
+              div.innerHTML+= '<div id="div-gpt-ad-1598610474215-0-passback-2"></div>';
+              googletag.cmd.push(function() { googletag.display('div-gpt-ad-1598610474215-0-passback-2'); });
+            }
+        }
+ 
+        var CriteoAdUnits = { "placements": [{ "slotid": criteoSlotId, "zoneid": criteoZoneId }]};
+        window.Criteo = window.Criteo || {}; window.Criteo.events = window.Criteo.events || [];
+        var processCdbBid = function() {
+            var bids = Criteo.GetBidsForAdUnit(criteoSlotId);
+            if (bids.length > 0) {
+                var bidFound = bids[0]; Criteo.RenderAd({ bidId: bidFound.id, containerId: bidFound.impressionId });
+            } else { passback();}
+        };
+        Criteo.events.push(function() { Criteo.RequestBids(CriteoAdUnits, processCdbBid, 2000);});
+    }();
+</script>
+<!-- END CRITEO CDB -->
