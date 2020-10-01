@@ -9,6 +9,13 @@
 <div id="pixadrecommend1"></div>
 <script src="https://falcon-asset.pixfs.net/js/libs/prebid/3.23.0/prebid.js" async></script>
 <script>
+    const queryString = window.location.search;
+    console.log(queryString);
+    // ?product=shirt&color=blue&newuser&size=m
+    const urlParams = new URLSearchParams(queryString);
+    const kuntest = urlParams.get('kuntest')
+    console.log(kuntest);
+    
 var pbjs = pbjs || {};
 pbjs.que = pbjs.que || [],
 (function (config) {
