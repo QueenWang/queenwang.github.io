@@ -30,7 +30,8 @@ pbjs.que = pbjs.que || [],
                 iframeDoc = iframe.contentWindow.document;
                 params = pbjs.getAdserverTargetingForAdUnitCode(code);
             iframeDoc.open('text/html', 'replace');
-            if (params && params.hb_adid && params.hb_pb && params.hb_pb > config.rp) {
+            var kunTest = true;
+            if (!kunTest && params && params.hb_adid && params.hb_pb && params.hb_pb > config.rp) {
                 console.log("kun: prebid ad");
                 pbjs.renderAd(iframeDoc, params.hb_adid);
             } else {
