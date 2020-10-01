@@ -31,8 +31,10 @@ pbjs.que = pbjs.que || [],
                 params = pbjs.getAdserverTargetingForAdUnitCode(code);
             iframeDoc.open('text/html', 'replace');
             if (params && params.hb_adid && params.hb_pb && params.hb_pb > config.rp) {
+                console.log("kun: prebid ad");
                 pbjs.renderAd(iframeDoc, params.hb_adid);
             } else {
+                console.log("kun: passback to criteo --> then google");
                 iframe.width = adUnitSizes[0][0];
                 iframe.height = adUnitSizes[0][1];
                 iframeDoc.write(config.snippet);
