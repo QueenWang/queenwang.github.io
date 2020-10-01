@@ -1,3 +1,12 @@
+<html>
+    <head>
+        <title>Prebid Test</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    
+    <body>
+
 <div id="pixad3844"></div>
 <script src="https://falcon-asset.pixfs.net/js/libs/prebid/3.23.0/prebid.js" async></script>
 <script>
@@ -23,8 +32,10 @@ pbjs.que = pbjs.que || [],
                 params = pbjs.getAdserverTargetingForAdUnitCode(code);
                 iframeDoc.open('text/html', 'replace');
                 if (params && params.hb_adid && params.hb_pb && params.hb_pb > config.rp) {
+                    console.log("kun: show prebid ad");
                     pbjs.renderAd(iframeDoc, params.hb_adid);
                 } else {
+                    console.log("kun: call back to criteo passback");
                     iframe.width = adUnitSizes[0][0];
                     iframe.height = adUnitSizes[0][1];
                     iframeDoc.write(config.snippet);
@@ -90,3 +101,6 @@ pbjs.que = pbjs.que || [],
     });
 </script>
 <div id="scupio-pixnet_4108_17750_18414_1_content" style="margin:0 auto; width:970px; height:250px;"><iframe id="scupio-pixnet_4108_17750_18414_1_content_frame" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe></div>
+
+    </body>
+</html>
