@@ -1,3 +1,11 @@
+<html>
+    <head>
+        <title>Prebid Test</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    
+    <body>
 <div id="pixadrecommend1"></div>
 <script src="https://falcon-asset.pixfs.net/js/libs/prebid/3.23.0/prebid.js" async></script>
 <script>
@@ -58,3 +66,5 @@ pbjs.que = pbjs.que || [],
 snippet: '\u003cdiv id=\"pixad1741d\"\u003e\u003c/div\u003e\r\n\u003cscript async=\u0027async\u0027 src=\"https://static.criteo.net/js/ld/publishertag.js\"\u003e\u003c/script\u003e\r\n\u003cscript\u003e\r\n(function () {\r\nvar falcon_dom = \u0027pixad1741d\u0027,\r\nfalcon_width = 300,\r\nfalcon_height = 250,\r\nfalcon_gclient = \u00276865528665029394\u0027,\r\nfalcon_gslot = \u00278291187800\u0027;\r\n\r\nvar CriteoAdUnits = { \"placements\": [\r\n{ \"slotid\": falcon_dom, \"zoneid\": 779351 }\r\n]};\r\nvar CriteoBids=CriteoBids||{},CriteoBidsReceived=function(){for(var t in CriteoAdUnits.placements){var e=CriteoAdUnits.placements[t],i=Criteo.GetBidsForAdUnit(e.slotid);CriteoBids[e.slotid]=i.length\u003e0?i[0]:null}},CriteoDisplayAd=function(t,e,i){if(void 0===i\u0026\u0026(i=0),null!==CriteoBids[t])if(void 0===CriteoBids[t]\u0026\u0026null!==CriteoBids[t])100\u003ei\u0026\u0026setTimeout(function(){CriteoDisplayAd(t,e,i+1)},200);else{var r=document.getElementById(t);if(r){var s=document.createElement(\"iframe\");s.setAttribute(\"id\",t+\"_iframe\"),s.setAttribute(\"frameborder\",\"0\"),s.setAttribute(\"allowtransparency\",\"true\"),s.setAttribute(\"hspace\",\"0\"),s.setAttribute(\"marginwidth\",\"0\"),s.setAttribute(\"marginheight\",\"0\"),s.setAttribute(\"scrolling\",\"no\"),s.setAttribute(\"vspace\",\"0\"),s.setAttribute(\"width\",CriteoBids[t].width),s.setAttribute(\"height\",CriteoBids[t].height),r.appendChild(s);var o=\u0027\u003cscript src=\"\u0027+CriteoBids[t].displayUrl+\u0027\"\u003e\u003c/scr\u0027+\u0027ipt\u003e\u0027,d=s.contentWindow.document;d.open(),d.write(o),d.close()}}else\"function\"==typeof e\u0026\u0026e()};\r\nwindow.Criteo = window.Criteo || {}; window.Criteo.events = window.Criteo.events || [];\r\nCriteo.events.push(function() { Criteo.RequestBids(CriteoAdUnits, CriteoBidsReceived, 2000); });\r\n\r\nCriteoDisplayAd(falcon_dom, function() {\r\n/* Passback */\r\nstr = \" \u003cins class=\\\"adsbygoogle\\\" style=\\\"display:inline-block;width:\" + falcon_width +\"px;height:\" + falcon_height +\"px\\\" data-ad-client=\\\"ca-pub-\" + falcon_gclient +\"\\\" data-ad-slot=\\\"\" + falcon_gslot + \"\\\" google-ad-region=\\\"falcon\\\"\u003e \u003c\\/ins\u003e \";\r\ndocument.getElementById(falcon_dom).innerHTML = str;\r\n\r\nvar s = document.createElement(\u0027script\u0027),\r\nsn = document.getElementsByTagName(\u0027script\u0027)[0];\r\n\r\ns.src = \u0027https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js\u0027;\r\nsn.parentNode.insertBefore(s, sn);\r\n\r\n(adsbygoogle=window.adsbygoogle || []).push({});\r\n});\r\n})();\r\n\u003c/script\u003e'
 });</script>
 <div id="scupio-pixnet_4108_17624_18288_1_content" style="margin:0 auto; width:300px; height:250px;"><iframe id="scupio-pixnet_4108_17624_18288_1_content_frame" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe></div>
+    </body>
+</html>
