@@ -1,1 +1,141 @@
+<html>
+    <head>
+        <title>Prebid Test</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    
+    <body>
+<div> Pixnet GPT Test</div>
+<br>
 
+      
+      
+<h3> -- original GAM tag sample from pixnet, standard 300x250 -- </h3>
+<script async src="https://securepubads.g.doubleclick.net/tag/js/gpt.js"></script>
+<script>
+  window.googletag = window.googletag || {cmd: []};
+  googletag.cmd.push(function() {
+    googletag.defineSlot('/1021267/desktop_article_endl', [300, 250], 'div-gpt-ad-1598944974006-0').addService(googletag.pubads());
+    googletag.pubads().enableSingleRequest();
+    googletag.enableServices();
+  });
+</script>
+
+<!-- /1021267/desktop_article_endl -->
+<div id='div-gpt-ad-1598944974006-0' style='width: 300px; height: 250px;'>
+  <script>
+    googletag.cmd.push(function() { googletag.display('div-gpt-ad-1598944974006-0'); });
+  </script>
+</div>
+
+      
+      
+      
+<h3> -- original GAM tag sample from pixnet, passback 300x250 -- </h3>
+<script async src="https://securepubads.g.doubleclick.net/tag/js/gpt.js"></script>
+<div id="gpt-passback">
+  <script>
+    window.googletag = window.googletag || {cmd: []};
+    googletag.cmd.push(function() {
+    googletag.defineSlot('/1021267/desktop_article_endl', [300, 250], 'gpt-passback').addService(googletag.pubads());
+    googletag.enableServices();
+    googletag.display('gpt-passback');
+    });
+  </script>
+</div>
+      
+      
+      
+<br>
+
+
+<h3> -- CDB Passback, to pixnet standard 300x250 -- </h3>   
+<!-- BEGIN CRITEO CDB -->
+<script async='async' type="text/javascript" src="//static.criteo.net/js/ld/publishertag.js"></script>
+<!-- CRITEO SLOT DIV ID, MUST BE UNIQUE PER FRAME -->
+<div id="criteo_slot_1556014"></div>
+<script>
+    !function(){
+        /* CRITEO ZONE ID, SLOT DIV ID */
+        var criteoZoneId = 1556014;
+        var criteoSlotId = "criteo_slot_1556014";
+         
+        var passback = function () {
+            /* CONFIG YOUR PASSBACK HERE, USE ASYNC JS */
+            console.log("passback, pixnet standard 300x250");
+            var div = document.getElementById(criteoSlotId);
+            if (div) {
+                var s = document.createElement('script'); s.setAttribute('async', ''); s.setAttribute('src', 'https://securepubads.g.doubleclick.net/tag/js/gpt.js'); 
+                div.appendChild(s);
+                window.googletag = window.googletag || {cmd: []};
+                  googletag.cmd.push(function() {
+                    googletag.defineSlot('/1021267/desktop_article_endl', [300, 250], 'div-gpt-ad-1598944974006-0').addService(googletag.pubads());
+                    googletag.pubads().enableSingleRequest();
+                    googletag.enableServices();
+                  });
+                /* /1021267/desktop_article_endl */
+                div.innerHTML+= '<div id="div-gpt-ad-1598944974006-0" style="width: 300px; height: 250px;"></div>';
+                googletag.cmd.push(function() { googletag.display('div-gpt-ad-1598944974006-0'); });
+            }
+        }
+ 
+        var CriteoAdUnits = { "placements": [{ "slotid": criteoSlotId, "zoneid": criteoZoneId }]};
+        window.Criteo = window.Criteo || {}; window.Criteo.events = window.Criteo.events || [];
+        var processCdbBid = function() {
+            var bids = Criteo.GetBidsForAdUnit(criteoSlotId);
+            if (bids.length > 0) {
+                var bidFound = bids[0]; Criteo.RenderAd({ bidId: bidFound.id, containerId: bidFound.impressionId });
+            } else { passback();}
+        };
+        Criteo.events.push(function() { Criteo.RequestBids(CriteoAdUnits, processCdbBid, 2000);});
+    }();
+</script>
+<!-- END CRITEO CDB -->
+
+
+<h3> -- CDB Passback, to pixnet GPT passback 300x250 -- </h3>   
+<!-- BEGIN CRITEO CDB -->
+<script async='async' type="text/javascript" src="//static.criteo.net/js/ld/publishertag.js"></script>
+<!-- CRITEO SLOT DIV ID, MUST BE UNIQUE PER FRAME -->
+<div id="criteo_slot_1556015"></div>
+<script>
+    !function(){
+        /* CRITEO ZONE ID, SLOT DIV ID */
+        var criteoZoneId = 1556015;
+        var criteoSlotId = "criteo_slot_1556015";
+         
+        var passback = function () {
+            /* CONFIG YOUR PASSBACK HERE, USE ASYNC JS */
+            console.log("passback, pixnet GPT passback 300x250");
+            var div = document.getElementById(criteoSlotId);
+            if (div) {
+                var s = document.createElement('script'); s.setAttribute('async', ''); s.setAttribute('src', 'https://securepubads.g.doubleclick.net/tag/js/gpt.js'); 
+                div.appendChild(s);
+                div.innerHTML+= '<div id="gpt-passback"></div>';
+                window.googletag = window.googletag || {cmd: []};
+                    googletag.cmd.push(function() {
+                    googletag.defineSlot('/1021267/desktop_article_endl', [300, 250], 'gpt-passback').addService(googletag.pubads());
+                    googletag.enableServices();
+                    googletag.display('gpt-passback');
+                    });
+            }
+        }
+ 
+        var CriteoAdUnits = { "placements": [{ "slotid": criteoSlotId, "zoneid": criteoZoneId }]};
+        window.Criteo = window.Criteo || {}; window.Criteo.events = window.Criteo.events || [];
+        var processCdbBid = function() {
+            var bids = Criteo.GetBidsForAdUnit(criteoSlotId);
+            if (bids.length > 0) {
+                var bidFound = bids[0]; Criteo.RenderAd({ bidId: bidFound.id, containerId: bidFound.impressionId });
+            } else { passback();}
+        };
+        Criteo.events.push(function() { Criteo.RequestBids(CriteoAdUnits, processCdbBid, 2000);});
+    }();
+</script>
+<!-- END CRITEO CDB -->
+      
+      
+      
+    </body>
+</html>
