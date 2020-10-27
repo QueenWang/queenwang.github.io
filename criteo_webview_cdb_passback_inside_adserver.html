@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>Prebid Test</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    
+    <body>
+        <p> == TEST Page - Mapping Device ID on MWEB == </p>
+
+
+        <!-- BEGIN CRITEO CDB -->
+        <script async='async' type="text/javascript" src="//static.criteo.net/js/ld/publishertag.js"></script>
+        <!-- CRITEO SLOT DIV ID, MUST BE UNIQUE PER FRAME -->
+        <div id="criteo_slot_1416091"></div>
+        <script>
+            !function(){
+                /* CRITEO ZONE ID, SLOT DIV ID */
+                var criteoZoneId = 1416091;
+                var criteoSlotId = "criteo_slot_1416091";
+
+                var passback = function () {
+                    /* CONFIG YOUR PASSBACK HERE, USE ASYNC JS */
+                    console.log("passback");
+                }
+
+                var CriteoAdUnits = { "placements": [{ "slotid": criteoSlotId, "zoneid": criteoZoneId }]};
+                window.Criteo = window.Criteo || {}; window.Criteo.events = window.Criteo.events || [];
+                var processCdbBid = function() {
+                    var bids = Criteo.GetBidsForAdUnit(criteoSlotId);
+                    if (bids.length > 0) {
+                        var bidFound = bids[0]; Criteo.RenderAd({ bidId: bidFound.id, containerId: bidFound.impressionId });
+                    } else { passback();}
+                };
+                Criteo.events.push(function() { 
+                    //test manually pass device ID information https://jira.criteois.com/browse/DPP-2792
+                    Criteo.SetUserExt({
+                        "deviceid": "5B179032-03D3-4953-B436-82F803E7E07C",
+                        "deviceidtype": "idfa"
+                    });
+                    Criteo.RequestBids(CriteoAdUnits, processCdbBid, 2000);
+                });
+            }();
+        </script>
+        <!-- END CRITEO CDB -->
+        
+        <p> == TEST Page - END == </p>
+        
+    </body>
+</html>
