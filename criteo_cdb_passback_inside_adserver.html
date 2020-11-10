@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>CDB Passback Inside Ad Server Test</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    
+    <body>
+        <p> == TEST Page - CDB Passback Inside Ad Server == </p>
+
+
+        <!-- BEGIN CRITEO CDB -->
+        <script async='async' type="text/javascript" src="//static.criteo.net/js/ld/publishertag.js"></script>
+        <!-- CRITEO SLOT DIV ID, MUST BE UNIQUE PER FRAME -->
+        <div id="criteo_slot_1564539"></div>
+        <script>
+            !function(){
+                /* CRITEO ZONE ID, SLOT DIV ID */
+                var criteoZoneId = 1564539;
+                var criteoSlotId = "criteo_slot_1564539";
+
+                var passback = function () {
+                    /* CONFIG YOUR PASSBACK HERE, USE ASYNC JS */
+                    console.log("passback");
+                }
+
+                var CriteoAdUnits = { "placements": [{ "slotid": criteoSlotId, "zoneid": criteoZoneId }]};
+                window.Criteo = window.Criteo || {}; window.Criteo.events = window.Criteo.events || [];
+                var processCdbBid = function() {
+                    var bids = Criteo.GetBidsForAdUnit(criteoSlotId);
+                    if (bids.length > 0) {
+                        var bidFound = bids[0]; Criteo.RenderAd({ bidId: bidFound.id, containerId: bidFound.impressionId });
+                    } else { passback();}
+                };
+                Criteo.events.push(function() { Criteo.RequestBids(CriteoAdUnits, processCdbBid, 2000);});
+            }();
+        </script>
+        <!-- END CRITEO CDB -->
+        
+        <p> == TEST Page - END == </p>
+        
+    </body>
+</html>
