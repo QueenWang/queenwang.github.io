@@ -26,7 +26,7 @@
                     console.log("passback");
                 }
 
-                var CriteoAdUnits = { "placements": [{ "slotid": criteoSlotId, "zoneid": criteoZoneId }]};
+                var CriteoAdUnits = { "placements": [{ "slotid": criteoSlotId, "zoneid": criteoZoneId, "publishersubid": "thisisasubid1" }]};
                 window.Criteo = window.Criteo || {}; window.Criteo.events = window.Criteo.events || [];
                 var processCdbBid = function() {
                     var bids = Criteo.GetBidsForAdUnit(criteoSlotId);
