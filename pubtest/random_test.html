@@ -1,0 +1,51 @@
+
+<html>
+    <head>
+        <title>Prebid Test</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    
+    <body>
+<div> Random Test</div>
+<br>
+
+<!-- BEGIN CRITEO CDB -->
+<script async='async' type="text/javascript" src="//static.criteo.net/js/ld/publishertag.js"></script>
+<!-- CRITEO SLOT DIV ID, MUST BE UNIQUE PER FRAME -->
+<div id="criteo_slot_1465976"></div>
+<script>
+    !function(){
+        /* CRITEO ZONE ID, SLOT DIV ID */
+        var criteoZoneId = 1465976;
+        var criteoSlotId = "criteo_slot_1465976";
+         
+        var passback = function () {
+            /* CONFIG YOUR PASSBACK HERE, USE ASYNC JS */
+            //console.log("passback");
+            var div = document.getElementById(criteoSlotId);
+            if (div) {
+                /* PIXNET_ROS_Desktop Web_ROS_Banner_300x600_3681_ROS */
+                var s = document.createElement('script'); s.setAttribute('type', 'text/javascript'); s.setAttribute('async', ''); s.setAttribute('src', '//ads.aralego.com/sdk'); 
+                div.appendChild(s);
+                div.innerHTML+= '<ins class="ucfad_async" style="display:none;width:300px;height:600px" data-ad_unit_id="ad-8A2999DA99A682B209D8986A3B67A49"></ins>';
+                (ucfad_async = window.ucfad_async||[]).push({});
+            }
+        }
+ 
+        var CriteoAdUnits = { "placements": [{ "slotid": criteoSlotId, "zoneid": criteoZoneId }]};
+        window.Criteo = window.Criteo || {}; window.Criteo.events = window.Criteo.events || [];
+        var processCdbBid = function() {
+            var bids = Criteo.GetBidsForAdUnit(criteoSlotId);
+            if (bids.length > 0) {
+                var bidFound = bids[0]; Criteo.RenderAd({ bidId: bidFound.id, containerId: bidFound.impressionId });
+            } else { passback();}
+        };
+        Criteo.events.push(function() { Criteo.RequestBids(CriteoAdUnits, processCdbBid, 2000);});
+    }();
+</script>
+<!-- END CRITEO CDB -->
+
+
+    </body>
+</html>
