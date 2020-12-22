@@ -32,7 +32,7 @@
                     var bids = Criteo.GetBidsForAdUnit(criteoSlotId);
                     if (bids.length > 0) {
                         var bidFound = bids[0]; 
-                        window.addEventListener('load', (event) => { //delay
+                        window.addEventListener('load', function(e) {
                           console.log("RenderAd");
                           Criteo.RenderAd({ bidId: bidFound.id, containerId: bidFound.impressionId });
                         });
