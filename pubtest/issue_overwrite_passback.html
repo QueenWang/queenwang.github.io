@@ -29,16 +29,21 @@
                 var CriteoAdUnits = { "placements": [{ "slotid": criteoSlotId, "zoneid": criteoZoneId, "publishersubid": "thisisasubid1" }]};
                 window.Criteo = window.Criteo || {}; window.Criteo.events = window.Criteo.events || [];
                 var processCdbBid = function() {
-                    var bids = Criteo.GetBidsForAdUnit(criteoSlotId);
-                    if (bids.length > 0) {
-                        var bidFound = bids[0]; 
-                        window.addEventListener('load', function(e) {
-                          console.log("RenderAd");
-                          Criteo.RenderAd({ bidId: bidFound.id, containerId: bidFound.impressionId });
-                        });
-                    } else { passback();}
+                         setTimeout(myFunction, 3000);
                 };
                 Criteo.events.push(function() { Criteo.RequestBids(CriteoAdUnits, processCdbBid, 2000);});
+                
+                function myFunction() {
+                       var bids = Criteo.GetBidsForAdUnit(criteoSlotId);
+                        if (bids.length > 0) {
+                            var bidFound = bids[0]; 
+                            //window.addEventListener('load', function(e) {
+                              console.log("RenderAd with timeout");
+                             Criteo.RenderAd({ bidId: bidFound.id, containerId: bidFound.impressionId });
+                            //});
+                        } else { passback();}
+                }
+                
             }();
         </script>
         <!-- END CRITEO CDB -->
