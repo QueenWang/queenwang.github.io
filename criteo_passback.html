@@ -18,11 +18,13 @@
         * and handling the passback code as well, getting this code from PMC zone set up
         -->
         <!--
-        <script src="https://cas.criteo.com/delivery/ajs.php?ptv=106&zoneid=182483&bundle=YH6KCV9zOElONml[%E2%80%A6]s=1&charset=UTF -8&dc=2&loc=https%3A%2F%2Fyadstool.yahoo.co.jp"> 
-        </script>
+        <script src="https://cas.criteo.com/delivery/ajs.php?ptv=106&zoneid=182483&bundle=YH6KCV9zOElONml[%E2%80%A6]s=1&charset=UTF -8&dc=2&loc=https%3A%2F%2Fyadstool.yahoo.co.jp"> </script>
         -->
         
         <p> * YJ HTML Tag * </p>
+        <!--
+            * passback is handled on PMC zone 
+        -->
         <script type='text/javascript' src='//static.criteo.net/js/ld/publishertag.js'> </script>
         <script type='text/javascript '>
             var Criteo = Criteo || {};
@@ -36,9 +38,18 @@
             });
         </script>
         
-         <p> * YJ Native API * </p>
-        
-        
+         <p> * Native API - general exmaple * </p>
+        <!--
+            * passback is handled by YJ side
+            * https://cas.criteo.com/delivery/0.1/napi.jsonp?zoneid=530653&callback=getResponse2797149743
+            * below is just an general exmaple using test zone id 1594400
+        -->
+        <script>
+            function testPassback() {
+                console.log("native api passback");
+            }
+        </script>
+        <script src="https://cas.criteo.com/delivery/0.1/napi.jsonp?zoneid=1594400&callback=testPassback"> </script>
         <p> == END OF TEST PAGE == </p>
        </body>
 </html>   
