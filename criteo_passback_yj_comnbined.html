@@ -1,0 +1,81 @@
+<html>
+    <head>
+        <title>Passback Test</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    
+    <body>
+        <p> == TEST PAGE == </p>
+        <p> * YJ passback HTML Tag example * </p>
+<script type='text/javascript' src='//static.criteo.net/js/ld/publishertag.js'></script>
+<script type='text/javascript'>
+    var Criteo = Criteo || {};
+    Criteo.events = Criteo.events || [];
+    Criteo.events.push(function() {
+        Criteo.DisplayAd({
+            //'zoneid': 1162125, //live YJ zone, with floor and YJ passback code that only works on YJ page with gCRITEO.passback()
+            'zoneid': 1585545, // test zone
+            'async': false
+        })
+    });
+</script>
+
+<p> * Native API - general example * </p>
+        <script type='text/javascript' src='//static.criteo.net/js/ld/publishertag.js'> </script>
+        
+        <div id="native-ad-unit"> </div>
+        <script>
+            function processNativeAd(json) {
+                console.log("native api callback handling");
+                console.log(json);
+                
+                if (json.response_status != 0) {
+                    console.log(json.status_message);
+                    console.log("no ad available, handle passback");
+                }
+                else {
+                     console.log("retrieved an ad successfully, rendering now");
+                    
+                     var div = document.getElementById('native-ad-unit');
+                        var htmlcode = '';
+                        var products_count = 3;
+                        htmlcode += '<div class="cto_mention">Advertisement</div>';
+                        htmlcode += '<div class="cto_privacy">';
+                        htmlcode += '<a href="'+ json.privacy.optout_click_url 
+                                 +'" target="_blank"><img src="'+ json.privacy.optout_image_url + '"></a>';
+                        htmlcode += '</div>';
+                        htmlcode += '<div class="cto_products">';
+                        for (var i in json.products) {
+                            if (i >= products_count) break;
+                            htmlcode += '<div class="cto_product">';
+                            htmlcode += '<a href="' + json.products[i].click_url + '" target="_blank">';
+                            htmlcode += '<div class="cto_product_image"><img src="'+ json.products[i].image.url +'"></div>';
+                            htmlcode += '<div class="cto_product_title">'+json.products[i].title+'</div>';
+                            htmlcode += '<div class="cto_product_description">'+json.products[i].description+'</div>';
+                            htmlcode += '<div class="cto_product_cta">'+json.products[i].call_to_action+'</div>';
+                            htmlcode += '</a>';
+                            htmlcode += '<a href="' + json.advertiser.logo_click_url + '" target="_blank">';
+                            htmlcode += '<div class="cto_advertiser">'+json.advertiser.domain +'</div>';
+                            htmlcode += '</a>';
+                            htmlcode += '</div>';
+                        }
+                        htmlcode += '</div>';
+                        for (i in json.impression_pixels) {
+                            htmlcode += '<img src="' + json.impression_pixels[i].url + '" width="0px" height="0px" style="display:none" >';
+                        }
+                        div.innerHTML = htmlcode;
+                        div.style.display = 'block';
+                }
+ 
+            }
+        </script>
+        
+        <script src="https://cas.criteo.com/delivery/0.1/napi.jsonp?zoneid=1594400&callback=processNativeAd"></script>
+      
+    
+        
+
+        <p> == END OF TEST PAGE == </p>
+       </body>
+</html>
