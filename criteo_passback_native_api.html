@@ -15,10 +15,15 @@
         
          <p> * Native API - general exmaple * </p>
         <!--
+            * add publishertag for YJ case, publishertag is not used although
+        -->
+         <script type='text/javascript' src='//static.criteo.net/js/ld/publishertag.js'> </script>
+        <!--
             * passback is handled by YJ side
             * https://cas.criteo.com/delivery/0.1/napi.jsonp?zoneid=530653&callback=getResponse2797149743
             * below is just an general exmaple using test zone id 1594400
         -->
+        
         <script>
             function testPassback() {
                 console.log("native api passback");
