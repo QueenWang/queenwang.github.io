@@ -13,9 +13,27 @@
     
     <body>
         <p> == TEST PAGE == </p>
-      
-      <script src="https://cas.criteo.com/delivery/ajs.php?ptv=106&zoneid=182483&bundle=YH6KCV9zOElONml[%E2%80%A6]s=1&charset=UTF-8&dc=2&loc=https%3A%2F%2Fyadstool.yahoo.co.jp"> </script>
-      
+        <!-- AJS URL check
+        * URL javascript is returning dis URL, lg URL
+        * and handling the passback code as well, getting this code from PMC zone set up
+        -->
+        <!--
+        <script src="https://cas.criteo.com/delivery/ajs.php?ptv=106&zoneid=182483&bundle=YH6KCV9zOElONml[%E2%80%A6]s=1&charset=UTF -8&dc=2&loc=https%3A%2F%2Fyadstool.yahoo.co.jp"> 
+        </script>
+        -->
+        
+        <script type='text/javascript' src='//static.criteo.net/js/ld/publishertag.js'> </script>
+        <script type='text/javascript '>
+            var Criteo = Criteo || {};
+            Criteo.events = Criteo.events || [];
+            Criteo.events.push(function() {
+                Criteo.DisplayAd({
+                    'zoneid': 1162125, //live YJ zone, with floor and passback code
+                    'async': false
+                })
+            });
+        </script>
+
 
        </body>
 </html>   
