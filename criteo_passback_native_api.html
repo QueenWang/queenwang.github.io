@@ -24,13 +24,77 @@
             * below is just an general exmaple using test zone id 1594400
         -->
         
+        <div id="native_ad_div"> </div>
         <script>
-            function testCallback(response) {
+            function processNativeAd(response) {
                 console.log("native api callback handling");
                 console.log(response);
+                
+                if (response.response_status != 0) {
+                    console.log(response.status_message);
+                    console.log("no ad available, handle passback");
+                }
+                else {
+                     console.log("retrieved an ad successfully, rendering now");
+                    
+                    /* 
+                    *****************************************************************************
+                    Below is an example implementation only, to demostrate how to build native ad.
+                   *****************************************************************************
+                   **/
+                    var div = document.getElementById("native_ad_div");
+                    var htmlcode = `<style>
+                        #native_ad_div { position: relative; overflow: hidden; }
+                        #native_ad_div .criteo-title { }
+                        #native_ad_div .criteo-privacy { position: absolute; right: 5px; top: 7px; z-index: 100; }
+                        #native_ad_div .criteo-privacy img { width:19px; height:15px; }
+                        #native_ad_div .criteo-products { position: relative; }
+                        #native_ad_div .criteo-product { overflow: hidden; position: relative; width: 135px; margin-right: 24px; display: inline-block; }
+                        #native_ad_div .criteo-product .criteo-product-image { width: 100%; height: 84px; position: relative; }
+                        #native_ad_div .criteo-product .criteo-product-image img { width: auto; min-height: auto; min-width: auto; max-width: 100%; max-height: 100%; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);  }
+                        #native_ad_div .criteo-product .criteo-product-title { font-weight: 600; line-height: 20px; }
+                        #native_ad_div .criteo-product .criteo-product-title a { }
+                        #native_ad_div .criteo-product .criteo-product-description { font-size: 11px; line-height: 20px; max-height: 40px; overflow: hidden; }
+                        #native_ad_div .criteo-product .criteo-product-description a { color: #000; }
+                        #native_ad_div .criteo-product .criteo-advertiser { font-size: 11px; font-weight: bold; line-height: 20px; color: #999; }
+                        #native_ad_div .criteo-product .criteo-advertiser a { color: #000; }
+                        </style>`;
+
+                   var products_count = 1; //Criteo will return multi products, you can choose how many to display 
+                    htmlcode += '<div class="criteo-products" style="padding-right:0px!important">';
+                    htmlcode += '<div class="criteo-privacy">';
+                    htmlcode += '<a href="'+ response.privacy.optout_click_url +'" target="_blank"><img src="'+ response.privacy.optout_image_url + '"></a>';
+                    htmlcode += '</div>';
+                    for (var i in response.products) {
+                        if (i >= products_count) continue;
+                        htmlcode += '<div class="criteo-product">';
+                        htmlcode += '<div class="criteo-product-image">';
+                        htmlcode += '<a href="'+ response.products[i].click_url +'" target="_blank"><img src="'+ response.products[i].image.url +'"></a>';
+                        htmlcode += '</div>';
+                        htmlcode += '<div class="criteo-product-title">';
+                        htmlcode += '<a href="' + response.products[i].click_url + '" target="_blank">'+response.products[i].title+'</a>';
+                        htmlcode += '</div>';
+                        htmlcode += '<div class="criteo-product-description">';
+                        htmlcode += '<a href="' + response.products[i].click_url + '" target="_blank">'+response.products[i].description+'</a>';
+                        htmlcode += '</div>';
+                        htmlcode += '<div class="criteo-advertiser">';
+                        htmlcode += '<a href="' + response.advertiser.logo_click_url + '" target="_blank">'+ response.advertiser.domain +'</a>';
+                        htmlcode += '</div>';
+                        htmlcode += '</div>';
+                    }
+                    htmlcode += '<div style="clear:both"></div>';
+                    htmlcode += '</div>';
+                    for (i in response.impression_pixels) {
+                        htmlcode += '<img src="' + response.impression_pixels[i].url + '" width="0px" height="0px" style="display:none" >';
+                    }
+                    div.innerHTML = htmlcode;
+                    div.style.display = 'block'; 
+                }
+ 
             }
         </script>
-        <script src="https://cas.criteo.com/delivery/0.1/napi.jsonp?zoneid=1594400&callback=testCallback"> </script>
+        
+        <script src="https://cas.criteo.com/delivery/0.1/napi.jsonp?zoneid=1594400&callback=processNativeAd"> </script>
         
         
         
