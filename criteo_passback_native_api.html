@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<!--
+    ad unit example code http://prebid.org/dev-docs/bidders.html#criteo
+    prebid basic example http://prebid.org/dev-docs/examples/basic-example.html
+-->
+<html>
+    <head>
+        <title>Passback Test</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    
+    <body>
+        <p> == TEST PAGE == </p>
+        
+         <p> * Native API - general exmaple * </p>
+        <!--
+            * passback is handled by YJ side
+            * https://cas.criteo.com/delivery/0.1/napi.jsonp?zoneid=530653&callback=getResponse2797149743
+            * below is just an general exmaple using test zone id 1594400
+        -->
+        <script>
+            function testPassback() {
+                console.log("native api passback");
+            }
+        </script>
+        <script src="https://cas.criteo.com/delivery/0.1/napi.jsonp?zoneid=1594400&callback=testPassback"> </script>
+        <p> == END OF TEST PAGE == </p>
+       </body>
+</html>   
