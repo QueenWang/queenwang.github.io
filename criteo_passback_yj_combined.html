@@ -8,7 +8,52 @@
     <body>
         <p> == TEST PAGE == </p>
         
-        <p> * Passback - general example * </p>
+        <p>* test CDB official passback - with pubtag async</p>
+        <script async='async' type="text/javascript" src="https://static.criteo.net/js/ld/publishertag.js"></script>
+                <script>
+        window.Criteo = window.Criteo || {};
+        window.Criteo.events = window.Criteo.events || [];
+        var adUnits = {
+            "placements": [
+            {
+                "slotid": "ad-unit-0",
+                "zoneid": 1572534
+            },
+            {
+                "slotid": "ad-unit-1",
+                "zoneid": 1572533
+            }
+            ]
+        }
+        Criteo.events.push(function() {
+            // Call Criteo and execute the callback function for a given timeout
+            Criteo.Passback.RequestBids(adUnits, 3000);
+        });
+        </script>
+        <!-- Adunit 0 -->
+        <div id="ad-unit-0"></div>
+        <script type="text/javascript">
+            Criteo.events.push(function() {
+                Criteo.Passback.RenderAd('ad-unit-0', function(adunit){
+                    console.log('passback for adunit:',adunit)
+        });
+            });
+        </script>
+        ...
+        <!-- Adunit 1 -->
+        <div id="ad-unit-1"></div>
+        <script type="text/javascript">
+            Criteo.events.push(function() {
+                Criteo.Passback.RenderAd('ad-unit-1', function(adunit){
+                    console.log('passback for adunit:',adunit)
+        });
+            });
+        </script>
+
+        <div>
+        </br>
+        
+        <p> * Passback - general example (pubtag sync for YJ) * </p>
         <script type='text/javascript' src='//static.criteo.net/js/ld/publishertag.js'></script>
         <script type='text/javascript'>
             var Criteo = Criteo || {};
