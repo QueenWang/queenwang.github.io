@@ -141,11 +141,12 @@ Test objective is to test outstream placements via prebid video for Criteo.
 					console.log(bid);
 					    console.log("bid.vastUrl=")
 					    console.log(bid.vastUrl);
-					bcPlayerTools.expandAndInjectAdOnlyPlayer({
+					//bcPlayerTools.expandAndInjectAdOnlyPlayer({
+					 bcPlayerTools.injectAdOnlyPlayer({
 					    div: document.getElementById("video2-outstream"), //NOTE: div must match with DFP slot 
-					    adTag: bid.vastUrl,
-					    height: 250, //480,//360,
-					    animationDuration: 200
+					    adTag: bid.vastUrl
+					    //height: 250, //480,//360,
+					    //animationDuration: 200
 					});
 				    }
 				}
