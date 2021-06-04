@@ -225,7 +225,7 @@ Test objective is to test outstream placements via prebid video for Criteo.
 	    // use same banner unit /140800857/kun-test-responsive, using 300x250 size for test
             // which accept 1x1 as well, prebid oustream GAM example is using 1x1
 	    googletag.cmd.push(function() {
-		googletag.defineSlot('/140800857/kun-test-responsive', [[300, 250]], 'video2-outstream').addService(googletag.pubads());		
+		googletag.defineSlot('/140800857/kun-test-responsive', [[1, 1]], 'video2-outstream').addService(googletag.pubads());		
 		googletag.pubads().enableSingleRequest();
 		googletag.enableServices();
 	    });
