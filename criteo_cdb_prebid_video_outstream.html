@@ -23,11 +23,18 @@ Test objective is to test outstream placements via prebid video for Criteo.
         <script async src="prebid2.43.0-dfpvideo.js"></script> <!-- only criteo and appnexus adaptor, include DFP video module-->
         
 	<!-- scripts for the outstream renderer -->
+	    <!--
 	<script src="//players.brightcove.net/5229431809001/rJVmLwTBx_default/index.min.js"></script>
         <link href="https://players.brightcove.net/videojs-ima3/3/videojs.ima3.min.css" rel="stylesheet"/>
         <script src="https://players.brightcove.net/videojs-ima3/3/videojs.ima3.min.js"></script>
         <script src="https://players.brightcove.net/3723496277001/files/adonly.js"></script>               
-
+-->
+	  
+  <script src="//players.brightcove.net/3723496277001/default_default/index.min.js"></script>
+  <link href="//players.brightcove.net/videojs-ima3/3/videojs.ima3.min.css" rel="stylesheet" />
+  <script src="//players.brightcove.net/videojs-ima3/3/videojs.ima3.min.js"></script>
+  <script src="//players.brightcove.net/3723496277001/files/adonly.js"></script>	    
+	    
         <script>
             var div_1_sizes = [
                 [300, 250],
@@ -122,7 +129,28 @@ Test objective is to test outstream placements via prebid video for Criteo.
 			    api: [1, 2],
 			    //playerSize: [640,480],
 		            playerSize: [300,250],
-			    protocols: [2, 3]
+			    protocols: [2, 3],
+			    //renderer is required for criteo outstream video, publisher has to declare this to handle rendering
+				//prefer to put renderer under media type to support multi format case, below way is old legacy way
+			    //below renderer is from criteo R&D sample
+			    //IMPORTANT NOTE: pls do not share this renderer code to publisher, this is just for demo only
+			    //more infor about brightcove outstream: https://support.brightcove.com/brightcove-player-sample-outstream-ad-only-player
+			    renderer: {
+				    url: "https://players.brightcove.net/3723496277001/files/adonly.js",
+				    render: function (bid) {
+					//debugger;
+					console.log("Kun Test: outstream video render triggered");
+					console.log(bid);
+					console.log("bid VAST URL=");
+					console.log(bid.vastUrl);
+					bcPlayerTools.expandAndInjectAdOnlyPlayer({
+					    div: document.getElementById("video2-outstream"), //NOTE: div must match with DFP slot 
+					    adTag: bid.vastUrl,
+					    height: 250, //480,//360,
+					    animationDuration: 200
+					});
+				    }
+				}
 			  }
 			},
 		    bids: [
@@ -137,27 +165,7 @@ Test objective is to test outstream placements via prebid video for Criteo.
 			      }
 			    }
 			  }
-			] ,
-		    //renderer is required for criteo outstream video, publisher has to declare this to handle rendering
-		 	//prefer to put renderer under media type to support multi format case, below way is old legacy way
-		    //below renderer is from criteo R&D sample
-	            //IMPORTANT NOTE: pls do not share this renderer code to publisher, this is just for demo only
-		    //more infor about brightcove outstream: https://support.brightcove.com/brightcove-player-sample-outstream-ad-only-player
-		    renderer: {
-			    url: "https://players.brightcove.net/3723496277001/files/adonly.js",
-			    render: function (bid) {
-				//debugger;
-		    		console.log("Kun Test: outstream video render triggered");
-			        console.log(bid);
-				bcPlayerTools.expandAndInjectAdOnlyPlayer({
-				    div: document.getElementById("video2-outstream"), //NOTE: div must match with DFP slot 
-				    adTag: bid.vastUrl,
-				     autoplay: true,
-				    height: 250, //480,//360,
-				    animationDuration: 200
-				});
-			    }
-			}
+			] 
                 },		    
                 
             ];
