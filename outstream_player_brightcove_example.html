@@ -1,0 +1,37 @@
+<!--
+eample page https://player.support.brightcove.com/advertising/jump-start-outstream-ad.html
+
+-->
+
+<!doctype html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <title>Untitled Document</title>
+</head>
+
+<body>
+  <div style="width:600px">
+    <h1>Lorem Ipsum</h1>
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Nunc mi ipsum faucibus vitae aliquet nec. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
+      ut labore et dolore magna aliqua. Nunc mi ipsum faucibus vitae aliquet nec.</p>
+    <div id="adPlayerDiv"></div>
+    <p>Habitasse platea dictumst vestibulum rhoncus est pellentesque elit ullamcorper. Varius vel pharetra vel turpis nunc eget lorem dolor. Habitasse platea dictumst vestibulum rhoncus est pellentesque elit ullamcorper. Varius vel pharetra vel turpis nunc
+      eget lorem dolor.</p>
+  </div>
+  <script src="//players.brightcove.net/3723496277001/default_default/index.min.js"></script>
+  <link href="//players.brightcove.net/videojs-ima3/3/videojs.ima3.min.css" rel="stylesheet" />
+  <script src="//players.brightcove.net/videojs-ima3/3/videojs.ima3.min.js"></script>
+  <script src="//players.brightcove.net/3723496277001/files/adonly.js"></script>
+  <script>
+bcPlayerTools.expandAndInjectAdOnlyPlayer({
+  div: adPlayerDiv,
+  adTag: 'https://solutions.brightcove.com/bcls/brightcove-player/vmap/simple-vast.xml',
+  height: 360,
+  animationDuration: 500
+});
+</script>
+</body>
+
+</html>
