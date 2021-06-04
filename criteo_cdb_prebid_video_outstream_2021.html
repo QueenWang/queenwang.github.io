@@ -22,8 +22,8 @@ Test objective is to test outstream placements via prebid video for Criteo.
         <script async src="prebid2.43.0-dfpvideo.js"></script> <!-- only criteo and appnexus adaptor, include DFP video module-->
         
 	<!-- scripts for the outstream renderer -->
-	<!--<script src="//players.brightcove.net/5229431809001/rJVmLwTBx_default/index.min.js"></script> -->
-	    <script src="//players.brightcove.net/3723496277001/default_default/index.min.js"></script>
+	<script src="//players.brightcove.net/5229431809001/rJVmLwTBx_default/index.min.js"></script>
+	   <!-- <script src="https://players.brightcove.net/3723496277001/default_default/index.min.js"></script> -->
         <link href="https://players.brightcove.net/videojs-ima3/3/videojs.ima3.min.css" rel="stylesheet"/>
         <script src="https://players.brightcove.net/videojs-ima3/3/videojs.ima3.min.js"></script>
         <script src="https://players.brightcove.net/3723496277001/files/adonly.js"></script>               
@@ -148,6 +148,8 @@ Test objective is to test outstream placements via prebid video for Criteo.
 				//debugger;
 		    		console.log("Kun Test: outstream video render triggered");
 			        console.log(bid);
+				    console.log("bid.vastUrl=")
+				    console.log(bid.vastUrl);
 				bcPlayerTools.expandAndInjectAdOnlyPlayer({
 				    div: document.getElementById("video2-outstream"), //NOTE: div must match with DFP slot 
 				    adTag: bid.vastUrl,
