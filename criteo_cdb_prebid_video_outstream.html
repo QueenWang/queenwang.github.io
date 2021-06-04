@@ -138,7 +138,8 @@ Test objective is to test outstream placements via prebid video for Criteo.
 			    }
 			  }
 			] ,
-		    //renderer is required for outstream video, publisher has to declare this to handle rendering
+		    //renderer is required for criteo outstream video, publisher has to declare this to handle rendering
+		 	//prefer to put renderer under media type to support multi format case, below way is old legacy way
 		    //below renderer is from criteo R&D sample
 	            //IMPORTANT NOTE: pls do not share this renderer code to publisher, this is just for demo only
 		    //more infor about brightcove outstream: https://support.brightcove.com/brightcove-player-sample-outstream-ad-only-player
@@ -151,6 +152,7 @@ Test objective is to test outstream placements via prebid video for Criteo.
 				bcPlayerTools.expandAndInjectAdOnlyPlayer({
 				    div: document.getElementById("video2-outstream"), //NOTE: div must match with DFP slot 
 				    adTag: bid.vastUrl,
+				     autoplay: true,
 				    height: 250, //480,//360,
 				    animationDuration: 200
 				});
