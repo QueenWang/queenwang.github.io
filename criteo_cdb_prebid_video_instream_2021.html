@@ -2,7 +2,9 @@
 <!--
    ad unit example code http://prebid.org/dev-docs/bidders.html#criteo
     prebid basic example http://prebid.org/dev-docs/examples/basic-example.html
-Test objective is to test both instream placements via prebid video for Criteo.
+    prebid banner+video adunits example: https://docs.prebid.org/dev-docs/examples/instream-banner-mix.html
+
+Test objective is to test banner+ instream placements via prebid video for Criteo.
 -->
 <html>
     <head>
@@ -125,8 +127,17 @@ Test objective is to test both instream placements via prebid video for Criteo.
             googletag.cmd.push(function() {
                 googletag.pubads().disableInitialLoad();
             });
+		
+	    // Init Prebid.js
             var pbjs = pbjs || {};
             pbjs.que = pbjs.que || [];
+ 	    
+	    // define invokeVideoPlayer in advance in case we get the bids back from prebid before the entire page loads
+            var tempTag = false;
+            var invokeVideoPlayer = function(url) {
+                tempTag = url;
+            };
+		
             pbjs.que.push(function() {
                 pbjs.addAdUnits(adUnits);
                 pbjs.addAdUnits(videoAdUnit);
@@ -146,32 +157,45 @@ Test objective is to test both instream placements via prebid video for Criteo.
             function initAdserver() {
                 if (pbjs.initAdserverSet) return;
                 pbjs.initAdserverSet = true;
-                googletag.cmd.push(function() {
+		
+		// Get all of the adUnit codes for the display adUnits
+                var displayAdUnitCodes = [];
+                adUnits.forEach(function(adUnit) {
+                  displayAdUnitCodes.push(adUnit.code);
+                });
+		
+		// Set targeting for each display slot
+		googletag.cmd.push(function() {
                     pbjs.que.push(function() {
-			                  //*** instream video video1 handling ***
+                        pbjs.setTargetingForGPTAsync(displayAdUnitCodes);
+                        googletag.pubads().refresh();
+                    });
+                });
+		
+	        //*** instream video video1 handling ***
+		// Build DFP URL with targeting for videoAdUnit
                         //handling video ad call back
                         //http://prebid.org/dev-docs/examples/instream-banner-mix.html
                         //http://prebid.org/dev-docs/show-video-with-a-dfp-video-tag.html#request-bids-build-video-url
                         // Build DFP URL with targeting for videoAdUnit
                         console.log("Kun Test - DFP is going to build video url wiht prebid ad unit infor plus DFP slot path");
                         console.log(videoAdUnit);
-                        var videoUrl = pbjs.adServers.dfp.buildVideoUrl({
-                            adUnit: videoAdUnit,
-                            params: {
-                          //iu: '/19968336/prebid_cache_video_adunit' //test ad unit from prebid official
-                          iu: '/140800857/kun-test-cdb--prebid-video'
-                            }
-                        });
-                        console.log("Kun Test - dfp built video URL = "+videoUrl);
-                        // Pass URL to Video player to make final DFP call
-                        invokeVideoPlayer(videoUrl);
-                        //*** END OF instream video video1 handling ***
-
-                        //normal codes
-                        pbjs.setTargetingForGPTAsync();
-                        googletag.pubads().refresh();
-                    });
+                var videoUrl = pbjs.adServers.dfp.buildVideoUrl({
+                    adUnit: videoAdUnit,
+                    params: {
+                        //iu: '/19968336/prebid_cache_video_adunit', //test ad unit from prebid official
+                        iu: '/140800857/kun-test-cdb--prebid-video',
+                       /* cust_params: {
+                            section: 'blog',
+                            anotherKey: 'anotherValue'
+                        },*/
+                        output: 'vast'
+                    }
                 });
+			console.log("Kun Test - dfp built video URL = "+videoUrl);
+                // Pass URL to Video player to make final DFP call
+                invokeVideoPlayer(videoUrl);
+		 //*** END OF instream video video1 handling ***
                 
             }
             // in case PBJS doesn't load
