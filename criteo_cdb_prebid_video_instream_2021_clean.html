@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<!-- Test banner + instream placements via prebid video for Criteo -->
+<html>
+    <head>
+        <title>Prebid Test</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    
+    <body>
+        <p> == PREBID TEST PAGE == </p>
+        
+        <script async src="//www.googletagservices.com/tag/js/gpt.js"></script>
+        <!-- preidjs: only criteo and appnexus adaptor, include DFP video module -->
+        <script async src="prebid4.41.0-dfpvideo.js"></script>
+        
+        <!-- video player code -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/video.js/6.4.0/video-js.css">
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/video.js/6.4.0/video.js"></script>
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/videojs-vast-vpaid/2.0.2/videojs.vast.vpaid.min.css" rel="stylesheet">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/videojs-vast-vpaid/2.0.2/videojs_5.vast.vpaid.min.js"></script> 
+        
+        <script>
+            var div_1_sizes = [
+                [300, 250],
+                [300, 600]
+            ];
+            var div_2_sizes = [
+                [728, 90],
+                [970, 250]
+            ];
+            var PREBID_TIMEOUT = 10000; //increase timeout to big number for test purpose
+            var FAILSAFE_TIMEOUT = 30000;
+            
+            // define banner ad units
+            var adUnits = [
+                {
+                    code: 'div-1', //IMPORTANT: support both ad unit code and div id, if pub able to differeciate by ad unit
+                    mediaTypes: {
+                        banner: {
+                            sizes: div_1_sizes
+                        }
+                    },
+                    bids: [
+                        {
+                            bidder: 'criteo',
+                            params: {
+                                //networkId: 9111
+                                zoneId: 1416091
+                            }
+                        }
+                    ]
+                },
+                {
+                    code: 'div-2',
+                    mediaTypes: {
+                        banner: {
+                            sizes: div_2_sizes
+                        }
+                    },
+                    bids: [
+                        {
+                            bidder: 'criteo',
+                            params: {
+                                //networkId: 9111
+                                zoneId: 1416092
+                            }
+                        }
+                    ]
+                }   
+            ];
+            
+            // *** INSTREAM VIDEO - define video ad unit with criteo bidder ***
+            //http://prebid.org/dev-docs/bidders.html#criteo
+            var videoAdUnit = 
+            {
+                code: 'video1',
+                mediaTypes: {
+                    video: {
+                        playerSize: [640, 480],
+                        context: 'instream',
+                        mimes: ["video/mp4"],
+                        maxduration: 30,
+                        api: [1, 2],
+                        protocols: [2, 3]
+                    }
+                },
+                bids: [{
+                    bidder: 'criteo',
+                    params: {
+                        //zoneId: 1477073,
+                        networkId: 9111,
+                        video: {
+                            skip: 0,
+                            playbackmethod: 1,
+                            placement: 1
+                        }
+                    }
+                }]
+            };
+            //*** END OF INSTREAM VIDEO - define video ad unit with criteo bidder***
+          
+            // ======== DO NOT EDIT BELOW THIS LINE =========== //
+            var googletag = googletag || {};
+            googletag.cmd = googletag.cmd || [];
+            googletag.cmd.push(function() {
+                googletag.pubads().disableInitialLoad();
+            });
+		
+	    // Init Prebid.js
+            var pbjs = pbjs || {};
+            pbjs.que = pbjs.que || [];
+ 	    
+	    // define invokeVideoPlayer in advance in case we get the bids back from prebid before the entire page loads
+            var tempTag = false;
+            var invokeVideoPlayer = function(url) {
+                tempTag = url;
+            };
+		
+            pbjs.que.push(function() {
+                pbjs.addAdUnits(adUnits);
+                pbjs.addAdUnits(videoAdUnit);
+                
+                // *** INSTREAM VIDEO - set video cache using appnexus ***
+                pbjs.setConfig({
+                    cache: {
+                        url: 'https://prebid.adnxs.com/pbc/v1/cache'  
+                    }
+                });
+                // *** END OF INSTREAM VIDEO - set video cache using appnexus ***
+                
+                pbjs.requestBids({
+                    bidsBackHandler: initAdserver,
+                    timeout: PREBID_TIMEOUT
+                });
+            });
+            
+            
+            function initAdserver() {
+                if (pbjs.initAdserverSet) return;
+                pbjs.initAdserverSet = true;
+		
+		// Get all of the adUnit codes for the display adUnits
+                var displayAdUnitCodes = [];
+                adUnits.forEach(function(adUnit) {
+                  displayAdUnitCodes.push(adUnit.code);
+                });
+		
+		// Set targeting for each display slot
+		googletag.cmd.push(function() {
+                    pbjs.que.push(function() {
+                        pbjs.setTargetingForGPTAsync(displayAdUnitCodes);
+                        googletag.pubads().refresh();
+                    });
+                });
+		
+	        //*** INSTREAM VIDEO - callback handling ***
+		// Build separate DFP VAST call for videoAdUnit
+                var videoUrl = pbjs.adServers.dfp.buildVideoUrl({
+                    adUnit: videoAdUnit,
+                    params: {
+                        iu: '/140800857/kun-test-cdb--prebid-video',
+                        output: 'vast'
+                    }
+                });
+                // Pass URL to Video player to make final DFP call
+                invokeVideoPlayer(videoUrl);
+                //*** END OF INSTREAM VIDEO - callback handling ***
+                
+            }
+            // in case PBJS doesn't load
+            setTimeout(function() {
+                initAdserver();
+            }, FAILSAFE_TIMEOUT);
+            
+            //*** INSTREAM VIDEO - does not require defineSlot, instead the ad unit code is used inside the callback pbjs.adServers.dfp.buildVideoUrl ***
+            //ad unit: /140800857/kun-test-cdb--prebid-video
+
+            //*** banner defineSlot
+            googletag.cmd.push(function() {
+                googletag.defineSlot('/140800857/kun-test-responsive', div_1_sizes, 'div-1').addService(googletag.pubads());
+                googletag.pubads().enableSingleRequest();
+                googletag.enableServices();
+            });
+            googletag.cmd.push(function() {
+                googletag.defineSlot('/140800857/kun-test-responsive', div_2_sizes, 'div-2').addService(googletag.pubads());
+                googletag.pubads().enableSingleRequest();
+                googletag.enableServices();
+            });
+      
+        </script>
+        
+        <h2>Basic Prebid.js Example</h2>
+        <br>
+        
+        <h5>Video Placement for Instream, using 3x3 test video zoneid, DFP test unit is /140800857/kun-test-cdb--prebid-video</h5>
+        
+        <!-- **** INSTREAM VIDEO - video player code ***
+            invoke video player for prebid video url 
+            videoJS complete example http://prebid.org/examples/video/instream/videojs/pb-ve-videojs.html
+        --> 
+        <div class="example-video-container">
+            <video id="vid1" class="video-js vjs-default-skin vjs-big-play-centered" controls data-setup='{}' width='640' height='480'>
+                <source src="https://vjs.zencdn.net/v/oceans.mp4" type='video/mp4'/>
+                <source src="https://vjs.zencdn.net/v/oceans.webm" type='video/webm'/>
+                <source src="https://vjs.zencdn.net/v/oceans.ogv" type='video/ogg'/>
+            </video>
+        </div>
+
+        <script>
+            var page_load_time;
+
+            page_load_time = new Date().getTime() - performance.timing.navigationStart;
+            console.log(page_load_time + "ms -- Player loading!");
+
+            var vid1 = videojs('vid1');
+
+            page_load_time = new Date().getTime() - performance.timing.navigationStart;
+            console.log(page_load_time + "ms -- Player loaded!");
+
+            function invokeVideoPlayer(url) {
+
+                page_load_time = new Date().getTime() - performance.timing.navigationStart;
+                console.log(page_load_time + "ms -- Prebid VAST url = " + url);
+
+                /* Access the player instance by calling `videojs()` and passing
+                   in the player's ID. Add a `ready` listener to make sure the
+                   player is ready before interacting with it. */
+
+                videojs("vid1").ready(function() {
+
+                    page_load_time = new Date().getTime() - performance.timing.navigationStart;
+                    console.log(page_load_time + "ms -- Player is ready!");
+
+                    /* PASS SETTINGS TO VAST PLUGIN
+                       Pass in a JSON object to the player's `vastClient` (defined
+                       by the VAST/VPAID plugin we're using). The requires an
+                       `adTagUrl`, which will be the URL returned by Prebid. You
+                       can view all the options available for the `vastClient`
+                       here:
+                       https://github.com/MailOnline/videojs-vast-vpaid#options */
+
+                    var player = this;
+                    var vastAd = player.vastClient({
+                        adTagUrl: url,
+                        playAdAlways: true,
+                        verbosity: 4,
+                        vpaidFlashLoaderPath: "https://github.com/MailOnline/videojs-vast-vpaid/blob/RELEASE/bin/VPAIDFlash.swf?raw=true",
+                        autoplay: true
+                    });
+
+                    page_load_time = new Date().getTime() - performance.timing.navigationStart;
+                    console.log(page_load_time + "ms -- Prebid VAST tag inserted!");
+
+                    player.muted(true);
+                    player.play();
+
+                    page_load_time = new Date().getTime() - performance.timing.navigationStart;
+                    console.log(page_load_time + "ms -- invokeVideoPlayer complete!");
+
+                });
+            }
+
+        </script>
+        <!-- **** END OF INSTREAM VIDEO - video player code *** -->
+        <br>
+	
+        <!-- banner placements -->
+        <h5>Div-1: Banner, using 300x600 test zoneid</h5>
+        <div id='div-1'>
+            <script type='text/javascript'>
+                googletag.cmd.push(function() {
+                    googletag.display('div-1');
+                });
+            </script>
+        </div>
+        <br>
+        
+        <h5>Div-2: Banner, using 970x250 test zoneid</h5>
+        <div id='div-2'>
+            <script type='text/javascript'>
+                googletag.cmd.push(function() {
+                    googletag.display('div-2');
+                });
+            </script>
+        </div>
+        <br>
+		    
+    </body>
+</html>
