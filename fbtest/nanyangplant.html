@@ -12,6 +12,7 @@
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
         <style>
             body {margin:10px;}
+            button {margin-left:10px}
         </style>
         
         <!-- ** Kun Note **
@@ -49,36 +50,40 @@
     </head>
     
     <body>
-        <h3> == Test Page for Advertiser (Nanyang Plant) == </h3>
-        <p>
-            FB Pixel Events manual: <br/>
-            <button id="purchase" type="button" class="btn btn-primary">Purchase 1.12 USD</button> 
-            <br/>
-            <button id="kun-click" type="button" class="btn btn-primary">Kun Click</button> 
-            <br/>
-            
-            <!-- Kun: JS code to trigger events -->
-            <script type="text/javascript">
-              $('#purchase').click(function() {
-                fbq('track', 'Purchase', {currency: "USD", value: 1.12});
-              });
-              $('#kun-click').click(function() {
-                fbq('trackCustom', 'KunClick', {test:123, price:456});
-              });
-            </script>
-            
-            <br/>
-            FB Pixel Events - Auto Detect: 
-            <br/>
-            <button id="add-to-cart" type="button" class="btn btn-warning">Add to Cart</button>
-            <br/>
-        </p>
+        <h3> Test Page for Advertiser (Nanyang Plant)</h3>
+        <h5> == FB Pixel == </h5>
+
+        FB Pixel Events manual: <br/>
+        <button id="purchase" type="button" class="btn btn-primary">Purchase 1.12 USD</button> 
+        <br/>
+        <br/>
+        <button id="kun-click" type="button" class="btn btn-primary">Kun Click</button> 
+        <br/>
+
+        <!-- Kun: JS code to trigger events -->
+        <script type="text/javascript">
+          $('#purchase').click(function() {
+            fbq('track', 'Purchase', {currency: "USD", value: 1.12});
+          });
+          $('#kun-click').click(function() {
+            fbq('trackCustom', 'KunClick', {test:123, price:456});
+          });
+        </script>
+
+        <br/>
+        FB Pixel Events - Auto Detect: 
+        <br/>
+        <button id="add-to-cart" type="button" class="btn btn-warning">Add to Cart</button>
+        <br/>
+      
+        
+        <h5> == Nanyang plant == </h5>
         <p>
             记录身边常见的植物.  As a peronsal interest, this page is to post plant spieces that are commonly seen in Singapore.<br/>
             <img src="nanyangplant_cover.jpeg" width="300" class="img-rounded"> </img>
         </p>
     
-        <h3> == END OF Test Page for Advertiser == </h3>
+        <h3> END OF Test Page </h3>
     </body>
   
   
