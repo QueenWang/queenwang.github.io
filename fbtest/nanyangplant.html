@@ -8,6 +8,8 @@
         
         <!-- Useful for UI -->
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
         
         <!-- ** Kun Note **
             this is the base code, JS part is formatted
@@ -47,25 +49,25 @@
         <p> == Test Page for Advertiser (Nanyang Plant) == </p>
         <p>
             FB Pixel Events manual <br/>
-            <button id="purchase">Purchase 1.12USD</button>
-            <button id="kun-click">Kun Click</button>
+            <button id="purchase" type="button" class="btn btn-default">Purchase 1.12 USD</button> <br/>
+            <button id="kun-click" type="button" class="btn btn-primary">Kun Click</button> <br/>
             
             <!-- Kun: JS code to trigger events -->
             <script type="text/javascript">
-              $('#$purchase').click(function() {
+              $('#purchase').click(function() {
                 fbq('track', 'Purchase', {currency: "USD", value: 1.12});
               });
-              $('#$kun-click').click(function() {
+              $('#kun-click').click(function() {
                 fbq('trackCustom', 'KunClick', {test:123, price:456});
               });
             </script>
             
             FB Pixel Events - Auto Detect <br/>
-            <button id="add-to-cart">Add to Cart</button>
+            <button id="add-to-cart" type="button" class="btn btn-warning">Add to Cart</button><br/>
         </p>
         <p>
             记录身边常见的植物.  As a peronsal interest, this page is to post plant spieces that are commonly seen in Singapore.<br/>
-            <img src="nanyangplant_cover.jpeg" width="300"> </img>
+            <img src="nanyangplant_cover.jpeg" width="300" class="img-rounded"> </img>
         </p>
     
         <p> == END OF Test Page for Advertiser == </p>
