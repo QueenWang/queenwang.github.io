@@ -6,6 +6,9 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         
+        <!-- Useful for UI -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        
         <!-- ** Kun Note **
             this is the base code, JS part is formatted
         -->
@@ -43,8 +46,26 @@
     <body>
         <p> == Test Page for Advertiser (Nanyang Plant) == </p>
         <p>
-            记录身边常见的植物. As a peronsal interest, this page is to post plant spieces that are commonly seen in Singapore.
-            <img src="nanyangplant_cover.jpeg" width="600"> </img>
+            FB Pixel Events manual <br/>
+            <button id="purchase">Purchase 1.12USD</button>
+            <button id="kun-click">Kun Click</button>
+            
+            <!-- Kun: JS code to trigger events -->
+            <script type="text/javascript">
+              $('#$purchase').click(function() {
+                fbq('track', 'Purchase', {currency: "USD", value: 1.12});
+              });
+              $('#$kun-click').click(function() {
+                fbq('trackCustom', 'KunClick', {test:123, price:456});
+              });
+            </script>
+            
+            FB Pixel Events - Auto Detect <br/>
+            <button id="add-to-cart">Add to Cart</button>
+        </p>
+        <p>
+            记录身边常见的植物.  As a peronsal interest, this page is to post plant spieces that are commonly seen in Singapore.<br/>
+            <img src="nanyangplant_cover.jpeg" width="300"> </img>
         </p>
     
         <p> == END OF Test Page for Advertiser == </p>
