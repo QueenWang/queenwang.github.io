@@ -47,37 +47,9 @@
 		ttq.load('CG78E9BC77UCLSGQPARG');
 		ttq.page();
 	}(window, document, 'ttq'); 
-</script>
+	</script>
+        <!-- End TikTok Ads Pixel Code -->
         
-        
-        <!-- Facebook Pixel Code -->
-        <script>
-            ! function(f, b, e, v, n, t, s) {
-                if (f.fbq) return;
-                n = f.fbq = function() {
-                    n.callMethod ?
-                        n.callMethod.apply(n, arguments) : n.queue.push(arguments)
-                };
-                if (!f._fbq) f._fbq = n;
-                n.push = n;
-                n.loaded = !0;
-                n.version = '2.0';
-                n.queue = [];
-                t = b.createElement(e);
-                t.async = !0;
-                t.src = v;
-                s = b.getElementsByTagName(e)[0];
-                s.parentNode.insertBefore(t, s)
-            }(window, document, 'script',
-                'https://connect.facebook.net/en_US/fbevents.js');
-            fbq('init', '1314543278965528'); //pixel ID
-            fbq('track', 'PageView'); //event type
-            
-        </script>
-        <noscript>
-            <img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=1314543278965528&ev=PageView&noscript=1"/>
-        </noscript>
-        <!-- End Facebook Pixel Code -->
         
     </head>
     
@@ -88,7 +60,7 @@
 	<br/>
 	    
 	TT Pixel Events manual: <br/>
-        <button id="purchase-tt" type="button" class="btn btn-primary">AddToCart - 1.12 USD</button> 
+        <button id="purchase" type="button" class="btn btn-primary">AddToCart - 1.12 USD</button> 
         <br/>
 	<!--
         <button id="kun-click" type="button" class="btn btn-primary">Custom - Kun Click</button> 
@@ -97,7 +69,7 @@
 
         <!-- Kun: JS code to trigger events -->
         <script type="text/javascript">
-          $('#purchase-tt').click(function() {
+          $('#purchase').click(function() {
 		ttq.track('AddToCart',{  
 		    content_id: '301',
 		    quantity: 1,
@@ -113,40 +85,6 @@
           });
         </script>
 
-        <br/>
-	<!--
-        FB Pixel Events - Auto Detect: 
-        <br/>
-        <button id="add-to-cart" type="button" class="btn btn-warning">Add to Cart</button>
-        <br/>
-	-->
-	    
-
-
-	    
-        <h5> == FB Pixel == </h5>
-
-        FB Pixel Events manual: <br/>
-        <button id="purchase" type="button" class="btn btn-primary">Purchase - 1.12 USD</button> 
-        <br/>
-        <br/>
-        <button id="kun-click" type="button" class="btn btn-primary">Custom - Kun Click</button> 
-        <br/>
-
-        <!-- Kun: JS code to trigger events -->
-        <script type="text/javascript">
-          $('#purchase').click(function() {
-            fbq('track', 'Purchase', {currency: "USD", value: 1.12});
-          });
-          $('#kun-click').click(function() {
-            fbq('trackCustom', 'KunClick', {test:123, price:456});
-          });
-        </script>
-
-        <br/>
-        FB Pixel Events - Auto Detect: 
-        <br/>
-        <button id="add-to-cart" type="button" class="btn btn-warning">Add to Cart</button>
         <br/>
       
         
