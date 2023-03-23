@@ -70,13 +70,15 @@
         <!-- Kun: JS code to trigger events -->
         <script type="text/javascript">
           $('#purchase').click(function() {
-		ttq.track('AddToCart',{  
-		    content_id: '301',
-		    quantity: 1,
-		    price: 8,
-		    value: 9.2,
-		    currency: 'USD',})
-		 }
+		ttq.track('AddToCart',
+			{  
+			    content_id: '301',
+			    quantity: 1,
+			    price: 8,
+			    value: 9.2,
+			    currency: 'USD'
+			}
+		 );
           });
 		
           $('#kun-click').click(function() {
