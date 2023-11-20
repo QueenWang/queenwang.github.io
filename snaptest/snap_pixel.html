@@ -1,1 +1,97 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Test Page Nanyang Plant</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <!-- Useful for UI -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+        <style>
+            body {margin:10px;}
+            button {margin-left:10px}
+        </style>
+        
+        
+        
+        <!-- ** Kun Note **
+            this is the base code, JS part is formatted
+        -->
+        
+      <!-- Snap Pixel Code -->
+      <script type='text/javascript'>
+        (function (e, t, n) {
+           if (e.snaptr) return;
+           var a = e.snaptr = function () {
+              a.handleRequest ? a.handleRequest.apply(a, arguments) : a.queue.push(arguments)
+           };
+           a.queue = [];
+           var s = 'script';
+           r = t.createElement(s);
+           r.async = !0;
+           r.src = n;
+           var u = t.getElementsByTagName(s)[0];
+           u.parentNode.insertBefore(r, u);
+        })(window, document,
+           'https://sc-static.net/scevent.min.js');
 
+        //below is pixel ID: ec1ff1a0-f0f5-406e-9f40-68a60f0a743d
+        snaptr('init', 'ec1ff1a0-f0f5-406e-9f40-68a60f0a743d', {
+           'user_email': '__INSERT_USER_EMAIL__'
+        });
+        
+        snaptr('track', 'PAGE_VIEW');
+      
+      </script>
+      <!-- End Snap Pixel Code -->
+        
+        
+    </head>
+    
+    <body>
+        <h3> Test Page for Advertiser (Nanyang Plant)</h3>
+	<h5> == TT Pixel == </h5>
+	<br/>
+	<br/>
+	    
+	TT Pixel Events manual: <br/>
+        <button id="purchase" type="button" class="btn btn-primary">AddToCart</button> 
+        <br/>
+	<!--
+        <button id="kun-click" type="button" class="btn btn-primary">Custom - Kun Click</button> 
+        <br/>
+       -->
+
+        <!-- Kun: JS code to trigger events -->
+        <script type="text/javascript">
+          $('#purchase').click(function() {
+      		snaptr('track','ADD_CART',
+      			{  
+      			    'currency': 'USD',
+                'price': 8,
+                'item_category': 'Shoes', 
+                'item_ids': ['301']
+      			}
+      		 );
+          });
+		
+          $('#kun-click').click(function() {
+  		    snaptr('track', 'KunClick);
+        </script>
+
+        <br/>
+      
+        
+        <h5> == Nanyang plant == </h5>
+        <p>
+            记录身边常见的植物.  As a peronsal interest, this page is to post plant spieces that are commonly seen in Singapore.<br/>
+            <img src="nanyangplant_cover.jpeg" width="300" class="img-rounded"> </img>
+        </p>
+    
+        <h3> END OF Test Page </h3>
+    </body>
+  
+  
+</html>
